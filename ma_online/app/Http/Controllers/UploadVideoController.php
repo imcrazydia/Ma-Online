@@ -38,6 +38,6 @@ class UploadVideoController extends Controller
 
         $videos->save();
         return redirect()->route('dashboard')
-        ->with('success','Contact created successfully.');
+        ->with('success','Upload van de video is succesvol.');
     }
 }
