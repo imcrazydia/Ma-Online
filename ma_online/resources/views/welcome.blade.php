@@ -37,10 +37,14 @@
             @endif
 
             <div class="max-w-2sm mx-auto">
-                @foreach ($videos as $video)
-                    <iframe width="340" height="240" src="{{ $video->video_link }}">
-                    </iframe>
-                @endforeach
+                @if (Route::has('login'))
+                    @foreach ($videos as $video)
+                        @auth
+                            <iframe width="340" height="240" src="{{ $video->video_link }}">
+                            </iframe>
+                        @endauth
+                    @endforeach
+                @endif
             </div>
         </div>
     </body>
