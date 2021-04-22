@@ -14,12 +14,7 @@ use App\Http\Controllers\UploadVideoController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::get('/upload', [UploadVideoController::class, 'create'])->name('create');
-Route::post('/store', [UploadVideoController::class, 'store'])->name('store_video');
+Route::get('/', [UploadVideoController::class, 'index'])->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -28,3 +23,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/upload', function () {
     return view('upload');
 })->name('upload');
+
+Route::get('/create', [UploadVideoController::class, 'create'])->name('create');
+Route::post('/store', [UploadVideoController::class, 'store'])->name('store_video');

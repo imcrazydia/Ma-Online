@@ -8,6 +8,12 @@ use App\Models\videos;
 class UploadVideoController extends Controller
 {
 
+    public function index()
+    {
+        $videos = \App\Models\videos::all();
+        return view('welcome',compact('videos'));
+    }
+
     public function create()
     {
         return view('upload.create');
@@ -17,14 +23,17 @@ class UploadVideoController extends Controller
     {
 
         $request->validate([
-            'video_link' => 'required',
-            'title' => 'required',
-            'description' => 'required',
-            'tags' => 'required',
+            'video_link' => 'required|max:255',
+            'title' => 'required|max:255',
+            'description' => 'required|max:255',
+            'tags' => 'required|max:255',
         ]);
 
+        $fullLink = $request->video_link;
+        $videoToken = substr($fullLink,32);
+
         $videos = new videos;
-        $videos->video_link = $request->video_link;
+        $videos->video_link = "https://www.youtube.com/embed/" . $videoToken;
         $videos->title = $request->title;
         $videos->description = $request->description;
         $videos->tags = $request->tags;
