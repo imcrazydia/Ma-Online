@@ -14,6 +14,15 @@ module.exports = {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
         },
+        module.exports = {
+            theme: {
+                colors: {
+                    magenta: {
+                        DEFAULT: '#E82681',
+                    }
+                }
+            }
+        }
     },
 
     variants: {

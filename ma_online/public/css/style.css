@@ -6,6 +6,13 @@ h1 {
 
 .background-image-login {
     background-image: url('/img/student-computer.jpg');
+    position: relative;
+}
+
+.authentication-position {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 [type='text'],
@@ -24,6 +31,19 @@ h1 {
 textarea,
 select {
     color: #000;
+}
+
+/*Custom colors*/
+.bg-ma-gray {
+    background-color: #383838;
+}
+
+.bg-ma-magenta {
+    background-color: #E82681;
+}
+
+.text-magenta:hover {
+    color: #E82681;
 }
 
 
