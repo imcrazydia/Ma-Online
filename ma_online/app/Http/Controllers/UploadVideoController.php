@@ -14,26 +14,49 @@ class UploadVideoController extends Controller
         return view('welcome',compact('videos'));
     }
 
-    public function create()
+    // public function create()
+    // {
+    //     return view('upload.create');
+    // }
+
+    public function youtubeCreate(Request $request)
     {
-        return view('upload.create');
+        $request->validate([
+            'video_link' => 'required|max:255',
+        ]);
+
+        $url = $request->video_link;
+
+        function getYoutubeVideoID($url){
+            $queryString = parse_url($url,PHP_URL_QUERY);
+            parse_str($queryString,$params);
+
+            if(isset($params['v']) && strlen($params['v'])>0){
+                return $params['v'];
+            }else{
+                return "Wrong youtube video url";
+            }
+        }
+
+        $api_key = "AIzaSyBy-a1LQE-mCxhgRSVKebbKdkgaAaaMOFI";
+        $api_ur='https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id='.getYoutubeVideoID($url).'&key='.$api_key;
+
+        $data = json_decode(file_get_contents($api_ur));
+
+        return view('upload', ['video' => $data]);
     }
 
     public function store(Request $request)
     {
 
         $request->validate([
-            'video_link' => 'required|max:255',
             'title' => 'required|max:255',
             'description' => 'required|max:255',
             'tags' => 'required|max:255',
         ]);
 
-        $fullLink = $request->video_link;
-        $videoToken = substr($fullLink,32);
-
         $videos = new videos;
-        $videos->video_link = "https://www.youtube.com/embed/" . $videoToken;
+        $videos->video_id = $request->video_id;
         $videos->title = $request->title;
         $videos->description = $request->description;
         $videos->tags = $request->tags;
