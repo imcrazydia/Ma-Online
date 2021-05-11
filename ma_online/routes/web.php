@@ -21,7 +21,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/upload', function () {
-    return view('video-link');
+    return view('upload');
 })->name('upload');
 
 Route::post('/upload/create', [UploadVideoController::class, 'youtubeCreate'])->name('create');
