@@ -1,6 +1,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
+            <link rel="stylesheet" href="{{ asset('css/style.css')}}">
             <x-jet-authentication-card-logo />
         </x-slot>
 

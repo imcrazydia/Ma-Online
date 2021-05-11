@@ -15,6 +15,12 @@ h1 {
     transform: translateY(-50%);
 }
 
+.image-center {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
 [type='text'],
 [type='email'],
 [type='url'],
@@ -42,8 +48,12 @@ select {
     background-color: #E82681;
 }
 
-.text-magenta:hover {
+.text-magenta {
     color: #E82681;
+}
+
+.text-magenta:hover {
+    color: #fff;
 }
 
 

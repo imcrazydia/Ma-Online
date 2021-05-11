@@ -18,6 +18,8 @@
         <form class="authentication-position" method="POST" action="{{ route('login') }}">
             @csrf
 
+            <img class="h-20 relative image-center" src="img/logo-ma-online.png">
+
             <h1 class="pt-6 pb-6">Gebruik je studentennummer om in te loggen
                 <h1>
 
@@ -42,7 +44,7 @@
 
                     <div class="flex items-center justify-end mt-4">
                         @if (Route::has('password.request'))
-                            <a class="underline text-sm text-white text-magenta"
+                            <a class="text-sm text-magenta font-medium"
                                href="{{ route('password.request') }}">
                                 {{ __('Wachtwoord vergeten?') }}
                             </a>
