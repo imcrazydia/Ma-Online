@@ -23,6 +23,9 @@ class UploadVideoController extends Controller
     {
         $request->validate([
             'video_link' => 'required|max:255',
+        ],
+        [
+            'video_link.required' => 'Video link is vereist.',
         ]);
 
         $url = $request->video_link;
@@ -49,11 +52,18 @@ class UploadVideoController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'title' => 'required|max:255',
-            'description' => 'required|max:255',
-            'tags' => 'required|max:255',
-        ]);
+        $request->validate(
+            [
+                'title' => 'required|max:255',
+                'description' => 'required|max:255',
+                'tags' => 'required|max:255',
+            ],
+            [
+                'title.required' => 'Titel is vereist',
+                'description.required' => 'Beschrijving is vereist',
+                'tags.required' => 'Tags zijn vereist',
+            ]
+        );
 
         $videos = new videos;
         $videos->video_id = $request->video_id;
@@ -69,6 +79,7 @@ class UploadVideoController extends Controller
         $videos->user_id = $request->user()->id;
 
         $videos->save();
+
         return redirect()->route('dashboard')
         ->with('success','Upload van de video is succesvol.');
     }

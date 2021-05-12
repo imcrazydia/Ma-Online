@@ -24,12 +24,15 @@
                                         placeholder="https://www.youtube.com/">
                                 </div>
                                 <p class="mt-2 text-sm text-white">
+                                    @if ($errors->has('video_link'))
+                                        <span class="text-danger">{{ $errors->first('video_link') }}</span>
+                                    @endif
                                     Alleen youtube links
                                 </p>
                             </div>
                             <div class="px-4 py-3 text-right sm:px-6">
                                 <button type="submit"
-                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta hover:bg-magenta focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
                                     Check link
                                 </button>
                             </div>
@@ -66,6 +69,11 @@
                                                 class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
                                                 value="{{ $video->items['0']->snippet->title }}">
                                         </div>
+                                        <p class="mt-2 text-sm text-white">
+                                            @if ($errors->has('title'))
+                                                <span class="text-danger">{{ $errors->first('title') }}</span>
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
 
@@ -79,6 +87,11 @@
                                             {{ $video->items['0']->snippet->description }}
                                         </textarea>
                                     </div>
+                                    <p class="mt-2 text-sm text-white">
+                                        @if ($errors->has('description'))
+                                            <span class="text-danger">{{ $errors->first('description') }}</span>
+                                        @endif
+                                    </p>
                                 </div>
 
                                 <div>
@@ -91,6 +104,9 @@
                                             placeholder="tag, tag"></textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-white">
+                                        @if ($errors->has('tags'))
+                                            <span class="text-danger">{{ $errors->first('tags') }}</span>
+                                        @endif
                                         Onderscheid de tags met een ,
                                     </p>
                                 </div>
