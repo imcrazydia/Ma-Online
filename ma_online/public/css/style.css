@@ -44,8 +44,16 @@ select {
     background-color: #383838;
 }
 
+.bg-ma-dark-gray {
+    background-color: #272727;
+}
+
 .bg-ma-magenta {
     background-color: #E82681;
+}
+
+.text-ma-white {
+    color: #fff;
 }
 
 .text-magenta {
@@ -54,6 +62,10 @@ select {
 
 .text-magenta:hover {
     color: #fff;
+}
+
+.border-bottom-white {
+    border-bottom: 3px #fff solid;
 }
 
 

@@ -14,6 +14,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css')}}">
 
         @livewireStyles
 
@@ -23,12 +24,12 @@
     <body class="font-sans antialiased">
         <x-jet-banner />
 
-        <div style="background-color: #383838;" class="min-h-screen">
+        <div class="min-h-screen bg-ma-gray">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="bg-ma-gray shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
