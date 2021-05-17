@@ -21,12 +21,12 @@
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <input type="text" name="video_link" id="video_link"
                                         class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
-                                        placeholder="https://www.youtube.com/">
+                                        placeholder="https://www.youtube.com/" maxlength="245">
                                 </div>
+                                @if ($errors->has('video_link'))
+                                    <span class="text-red-600">{{ $errors->first('video_link') }}</span>
+                                @endif
                                 <p class="mt-2 text-sm text-white">
-                                    @if ($errors->has('video_link'))
-                                        <span class="text-danger">{{ $errors->first('video_link') }}</span>
-                                    @endif
                                     Alleen youtube links
                                 </p>
                             </div>
@@ -67,7 +67,7 @@
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <input type="text" name="title" id="title"
                                                 class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
-                                                value="{{ $video->items['0']->snippet->title }}">
+                                                value="{{ $video->items['0']->snippet->title }}" maxlength="245">
                                         </div>
                                         <p class="mt-2 text-sm text-white">
                                             @if ($errors->has('title'))
@@ -82,7 +82,7 @@
                                         Beschrijving
                                     </label>
                                     <div class="mt-1">
-                                        <textarea id="description" name="description" rows="5"
+                                        <textarea id="description" name="description" rows="5" maxlength="245"
                                             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md">
                                             {{ $video->items['0']->snippet->description }}
                                         </textarea>
@@ -99,7 +99,7 @@
                                         Tags
                                     </label>
                                     <div class="mt-1">
-                                        <textarea id="tags" name="tags" rows="3"
+                                        <textarea id="tags" name="tags" rows="3" maxlength="245"
                                             class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
                                             placeholder="tag, tag"></textarea>
                                     </div>

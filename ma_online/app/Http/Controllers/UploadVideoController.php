@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\videos;
+use Illuminate\Support\Str;
 
 class UploadVideoController extends Controller
 {
@@ -21,14 +22,16 @@ class UploadVideoController extends Controller
 
     public function youtubeCreate(Request $request)
     {
+
         $request->validate([
-            'video_link' => 'required|max:255',
+            'video_link' => 'required|url|max:255',
         ],
         [
             'video_link.required' => 'Video link is vereist.',
+            'video_link.url' => 'Video link is niet geldig.',
         ]);
 
-        $url = $request->video_link;
+        $url = filter_var($request->video_link, FILTER_SANITIZE_URL);
 
         function getYoutubeVideoID($url){
             $queryString = parse_url($url,PHP_URL_QUERY);
@@ -46,6 +49,9 @@ class UploadVideoController extends Controller
 
         $data = json_decode(file_get_contents($api_ur));
 
+        $data->items['0']->snippet->title = Str::of($data->items['0']->snippet->title)->limit(245);
+        $data->items['0']->snippet->description = Str::of($data->items['0']->snippet->description)->limit(245);
+
         return view('upload', ['video' => $data]);
     }
 
@@ -54,13 +60,13 @@ class UploadVideoController extends Controller
 
         $request->validate(
             [
+                'video_id' => 'required',
                 'title' => 'required|max:255',
-                'description' => 'required|max:255',
+                'description' => 'max:255',
                 'tags' => 'required|max:255',
             ],
             [
                 'title.required' => 'Titel is vereist',
-                'description.required' => 'Beschrijving is vereist',
                 'tags.required' => 'Tags zijn vereist',
             ]
         );
