@@ -37,7 +37,7 @@
                 </div>
             @endif
 
-            <div class="max-w-2sm mx-auto">
+            {{-- <div class="max-w-2sm mx-auto">
                 @if (Route::has('login'))
                     @foreach ($videos as $video)
                         @auth
@@ -46,7 +46,7 @@
                         @endauth
                     @endforeach
                 @endif
-            </div>
+            </div> --}}
         </div>
     </body>
 </html>

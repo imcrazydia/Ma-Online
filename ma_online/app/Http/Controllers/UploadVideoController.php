@@ -13,14 +13,10 @@ class UploadVideoController extends Controller
 
     public function index()
     {
-        $videos = \App\Models\videos::all();
-        return view('welcome',compact('videos'));
+        // $videos = \App\Models\videos::all();
+        // return view('welcome',compact('videos'));
+        return view('welcome');
     }
-
-    // public function create()
-    // {
-    //     return view('upload.create');
-    // }
 
     public function youtubeCreate(Request $request)
     {

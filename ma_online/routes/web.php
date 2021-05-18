@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadVideoController;
 
@@ -16,9 +17,7 @@ use App\Http\Controllers\UploadVideoController;
 
 Route::get('/', [UploadVideoController::class, 'index'])->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/profiel', function () {
-    return view('profiel');
-})->name('profiel');
+Route::middleware(['auth:sanctum', 'verified'])->get('/profiel', [ProfileController::class, 'index'])->name('profiel');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/upload', function () {
     return view('upload');

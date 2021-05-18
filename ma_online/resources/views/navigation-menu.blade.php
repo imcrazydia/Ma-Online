@@ -8,7 +8,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
                         <img src="img/logo-ma-online.png" class="h-8 relative image-center inline" alt="alt text">
-                        <a href="/profiel" class="text-white pl-4 pt-1">
+                        <a href="/" class="text-white pl-4 pt-1">
                             Ma.Online
                         </a>
                     </a>
