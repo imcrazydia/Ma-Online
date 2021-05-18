@@ -8,7 +8,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
                         <img src="img/logo-ma-online.png" class="h-8 relative image-center inline" alt="alt text">
-                        <a href="/dashboard" class="text-white pl-4 pt-1">
+                        <a href="/profiel" class="text-white pl-4 pt-1">
                             Ma.Online
                         </a>
                     </a>
@@ -16,7 +16,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <x-jet-nav-link href="{{ route('profiel') }}" :active="request()->routeIs('profiel')">
                         {{ __('Profiel') }}
                     </x-jet-nav-link>
                 </div>
@@ -161,8 +161,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-jet-responsive-nav-link href="{{ route('profiel') }}" :active="request()->routeIs('profiel')">
+                {{ __('Profiel') }}
             </x-jet-responsive-nav-link>
         </div>
 

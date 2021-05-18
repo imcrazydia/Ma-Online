@@ -86,7 +86,7 @@ class UploadVideoController extends Controller
 
         $videos->save();
 
-        return redirect()->route('dashboard')
+        return redirect()->route('profiel')
         ->with('success','Upload van de video is succesvol.');
     }
 }
