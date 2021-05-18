@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\videos;
+use App\Models\tags;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class UploadVideoController extends Controller
 {
@@ -49,8 +51,8 @@ class UploadVideoController extends Controller
 
         $data = json_decode(file_get_contents($api_ur));
 
-        $data->items['0']->snippet->title = Str::of($data->items['0']->snippet->title)->limit(245);
-        $data->items['0']->snippet->description = Str::of($data->items['0']->snippet->description)->limit(245);
+        $data->items['0']->snippet->title = Str::of($data->items['0']->snippet->title)->limit(240);
+        $data->items['0']->snippet->description = Str::of($data->items['0']->snippet->description)->limit(240);
 
         return view('upload', ['video' => $data]);
     }
@@ -71,11 +73,49 @@ class UploadVideoController extends Controller
             ]
         );
 
+        $tags = strtolower($request->tags);
+        $tags = str_replace(' ', '_', $tags);
+        $tags = explode(",",$tags);
+
+        $tagList = array();
+
+        foreach($tags as $tag) {
+            $filterdTag = ltrim($tag,'_');
+            array_push($tagList,$filterdTag);
+        }
+
+        $filterdTag = implode(",", $tagList);
+        $tags = explode(",", $filterdTag);
+
+        $tagNameList = array(); // Array for IDs from used tags
+
+        foreach ($tags as $tag) {
+            $existingTag = DB::table('tags')->select("*")->where("tag_title", $tag)->exists();
+
+            if ($existingTag) {
+                DB::table('tags')->where("tag_title", $tag)->increment('amount_used');
+
+                $existingTagID = DB::table('tags')->where("tag_title", $tag)->value('id');
+                array_push($tagNameList, $existingTagID);
+            } else {
+                $newTag = new tags;
+                $newTag->tag_title = $tag;
+                $newTag->amount_used = 1;
+
+                $newTag->save();
+
+                $tagID = $newTag->id;
+                array_push($tagNameList, $tagID);
+            }
+        }
+
+        $tagNameList = implode(",", $tagNameList); // change ID array list to a string
+
         $videos = new videos;
         $videos->video_id = $request->video_id;
         $videos->title = $request->title;
         $videos->description = $request->description;
-        $videos->tags = $request->tags;
+        $videos->tags = $tagNameList;
         $videos->views = 0;
         $videos->star_one = 0;
         $videos->star_two = 0;
