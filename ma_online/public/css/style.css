@@ -18,16 +18,21 @@ h1 {
     max-height: 18rem;
 }
 
-.ma-online-logo {
-    color: #fff;
-    font-size: 65px;
+.grid-container {
+    height: 100vh;
+    position: relative;
 }
 
 .grid-placement {
+    position: absolute;
     top: 50%;
     left: 50%;
-    /*Moet nog kijken naar de prefixes*/
-    transform: translate(40%, 70%);
+    transform: translate(-50%, -50%);
+}
+
+.ma-online-logo {
+    color: #fff;
+    font-size: 65px;
 }
 
 .authentication-position {
@@ -85,8 +90,27 @@ select {
     color: #fff;
 }
 
+.welcome-login {
+    z-index: 99;
+}
+
 .border-bottom-white {
     border-bottom: 3px #fff solid;
+}
+
+/*Custom scrollbar*/
+::-webkit-scrollbar {
+    width: 16px;
+}
+
+::-webkit-scrollbar-track {
+    background: #cccccc;
+    XXborder-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    XXborder-radius: 5px;
+    background: gray;
 }
 
 
