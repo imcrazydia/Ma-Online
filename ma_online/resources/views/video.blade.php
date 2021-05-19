@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="py-6">
-            <div class="max-w-7xl mx-auto h-screen py-6 px-4 sm:px-6 lg:px-8 bg-ma-light-gray">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-ma-light-gray">
                 <div class="youtube-video-container">
                     <iframe
                         width="560"
@@ -25,8 +25,15 @@
                         </h2>
                         <p class="text-white text-sm pt-2 border-t-2">{{ $video->description }}</p>
                     </div>
+                    @endforeach
+
+                    <div class="py-3">
+                        @foreach ($tagNameList as $tag)
+                            <span class="text-white bg-magenta-100 py-1 px-2">{{ $tag->tag_title }}</span>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    @endforeach
+
 </x-app-layout>

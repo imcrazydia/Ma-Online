@@ -14,6 +14,26 @@ class VideoController extends Controller
         ->where('id', $id ) // Get video id from video parameter
         ->get();
 
-        return view('video',compact('videos'));
+        $tags = DB::table('videos')
+        ->where('id', $id )
+        ->get('tags');
+
+        $tagNameList = array();
+
+        foreach ($tags as $tag) {
+            $tests = explode(",", $tag->tags);
+
+            foreach ($tests as $test) {
+                $items = DB::table('tags')
+                ->where('id', $test )
+                ->get('tag_title');
+
+                foreach ($items as $item) {
+                    array_push($tagNameList, $item);
+                }
+            }
+        }
+
+        return view('video',compact('videos', 'tagNameList'));
     }
 }
