@@ -17,7 +17,7 @@ use App\Http\Controllers\UploadVideoController;
 
 Route::get('/', [UploadVideoController::class, 'index'])->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/profiel', [ProfileController::class, 'index'])->name('profiel');
+Route::middleware(['auth:sanctum', 'verified'])->get('/profiel/{user}', [ProfileController::class, 'index'])->name('profiel');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/upload', function () {
     return view('upload');
