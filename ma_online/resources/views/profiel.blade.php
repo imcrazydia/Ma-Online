@@ -16,9 +16,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden sm:rounded-lg">
                 @foreach ($videos as $video)
-                    <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
-                    {{ $video->title }}
-                    <br>
+                    <div>
+                        <a href="{{ route('video', ['id'=>$video->id]) }}">
+                            <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                            <h2 class="text-white">{{ __($video->title) }}</h2>
+                        </a>
+                    </div>
                 @endforeach
             </div>
         </div>

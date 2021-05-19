@@ -7,6 +7,7 @@ use App\Models\videos;
 use App\Models\tags;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class UploadVideoController extends Controller
 {
@@ -122,7 +123,7 @@ class UploadVideoController extends Controller
 
         $videos->save();
 
-        return redirect()->route('profiel')
+        return redirect()->route('profiel', ['user'=>Auth::user()->name])
         ->with('success','Upload van de video is succesvol.');
     }
 }
