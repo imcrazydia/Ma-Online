@@ -90,6 +90,10 @@ select {
     color: #fff;
 }
 
+.text-ma-light-gray {
+    color: #707070;
+}
+
 .text-magenta {
     color: #E82681;
 }

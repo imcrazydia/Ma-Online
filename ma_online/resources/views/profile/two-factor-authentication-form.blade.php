@@ -1,24 +1,28 @@
 <x-jet-action-section>
     <x-slot name="title">
-        {{ __('Two Factor Authentication') }}
+        <div class="text-ma-white">
+        {{ __('Twee stappen verificatie ') }}
+        </div>
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Add additional security to your account using two factor authentication.') }}
+        <div class="text-ma-white update-description">
+        {{ __('Voeg extra beveiliging aan uw account toe door middel van twee stappen verificatie.') }}
+        </div>
     </x-slot>
 
     <x-slot name="content">
         <h3 class="text-lg font-medium text-gray-900">
             @if ($this->enabled)
-                {{ __('You have enabled two factor authentication.') }}
+                {{ __('Je hebt twee stappen verificatie momenteel ingeschakeld.') }}
             @else
-                {{ __('You have not enabled two factor authentication.') }}
+                {{ __('Je hebt momenteel niet twee stappen verificatie ingeschakeld') }}
             @endif
         </h3>
 
         <div class="mt-3 max-w-xl text-sm text-gray-600">
             <p>
-                {{ __('When two factor authentication is enabled, you will be prompted for a secure, random token during authentication. You may retrieve this token from your phone\'s Google Authenticator application.') }}
+                {{ __('Als tweefactorauthenticatie is ingeschakeld, wordt u tijdens de authenticatie om een ​​veilig, willekeurig token gevraagd. U kunt dit token ophalen uit de Google Authenticator-applicatie van uw telefoon.') }}
             </p>
         </div>
 
@@ -26,7 +30,7 @@
             @if ($showingQrCode)
                 <div class="mt-4 max-w-xl text-sm text-gray-600">
                     <p class="font-semibold">
-                        {{ __('Two factor authentication is now enabled. Scan the following QR code using your phone\'s authenticator application.') }}
+                        {{ __('Twee-factor-authenticatie is nu ingeschakeld. Scan de volgende QR-code met de verificatietoepassing van uw telefoon.') }}
                     </p>
                 </div>
 
