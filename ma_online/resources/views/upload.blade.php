@@ -1,6 +1,5 @@
 <x-app-layout>
-
-
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if(session('status'))
@@ -20,19 +19,19 @@
                                 </label>
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <input type="text" name="video_link" id="video_link"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
-                                        placeholder="https://www.youtube.com/" maxlength="245">
+                                           class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                                           placeholder="https://www.youtube.com/" maxlength="245">
                                 </div>
                                 @if ($errors->has('video_link'))
                                     <span class="text-red-600">{{ $errors->first('video_link') }}</span>
                                 @endif
-                                <p class="mt-2 text-sm text-white">
+                                <p class="mt-2 text-sm font-bold text-white">
                                     Alleen youtube links
                                 </p>
                             </div>
                             <div class="px-4 py-3 pt-6 text-right sm:px-6">
                                 <button type="submit"
-                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
+                                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
                                     Check link
                                 </button>
                             </div>
@@ -52,9 +51,10 @@
                                             Thumbnail
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
-                                            <img src="https://img.youtube.com/vi/{{ $video->items['0']->id }}/0.jpg" alt="">
+                                            <img src="https://img.youtube.com/vi/{{ $video->items['0']->id }}/0.jpg"
+                                                 alt="">
                                             <input type="hidden" name="video_id" id="video_id"
-                                                value="{{ $video->items['0']->id }}">
+                                                   value="{{ $video->items['0']->id }}">
                                         </div>
                                     </div>
                                 </div>
@@ -66,8 +66,8 @@
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <input type="text" name="title" id="title"
-                                                class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300"
-                                                value="{{ $video->items['0']->snippet->title }}" maxlength="245">
+                                                   class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray"
+                                                   value="{{ $video->items['0']->snippet->title }}" maxlength="245">
                                         </div>
                                         <p class="mt-2 text-sm text-white">
                                             @if ($errors->has('title'))
@@ -83,7 +83,7 @@
                                     </label>
                                     <div class="mt-1">
                                         <textarea id="description" name="description" rows="5" maxlength="245"
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md">
+                                                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm bg-ma-light-gray">
                                             {{ $video->items['0']->snippet->description }}
                                         </textarea>
                                     </div>
@@ -100,8 +100,8 @@
                                     </label>
                                     <div class="mt-1">
                                         <textarea id="tags" name="tags" rows="3" maxlength="245"
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md"
-                                            placeholder="tag, tag"></textarea>
+                                                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm bg-ma-light-gray"
+                                                  placeholder="tag, tag"></textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-white">
                                         @if ($errors->has('tags'))
@@ -113,7 +113,7 @@
                             </div>
                             <div class="px-4 py-3 text-right sm:px-6">
                                 <button type="submit"
-                                    class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Upload
                                 </button>
                             </div>
