@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\videos;
 use App\Models\tags;
-use Illuminate\Support\Str;
+
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
+use Auth;
 
 class UploadVideoController extends Controller
 {
@@ -59,6 +63,7 @@ class UploadVideoController extends Controller
         $request->validate(
             [
                 'video_id' => 'required',
+                'duration' => 'required',
                 'title' => 'required|max:255',
                 'description' => 'max:255',
                 'tags' => 'required|max:255',
@@ -107,12 +112,21 @@ class UploadVideoController extends Controller
 
         $tagNameList = implode(",", $tagNameList); // change ID array list to a string
 
+        // Duration Formatting
+        // $duration = new DateInterval($request->duration);
+
+        // if ($duration->h > 0) {
+        //     $formattedDur = $duration->format('%H:%I:%S');
+        // } else {
+        //     $formattedDur = $duration->format('%I:%S');
+        // }
+
         $videos = new videos;
         $videos->video_id = $request->video_id;
         $videos->title = $request->title;
         $videos->description = $request->description;
         $videos->tags = $tagNameList;
-        $videos->views = 0;
+        $videos->duration = $request->duration;
         $videos->star_one = 0;
         $videos->star_two = 0;
         $videos->star_three = 0;
@@ -122,7 +136,7 @@ class UploadVideoController extends Controller
 
         $videos->save();
 
-        return redirect()->route('profiel')
+        return redirect()->route('profiel', ['user'=>Auth::user()->name])
         ->with('success','Upload van de video is succesvol.');
     }
 }

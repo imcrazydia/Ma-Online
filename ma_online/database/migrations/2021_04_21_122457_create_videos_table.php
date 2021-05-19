@@ -19,7 +19,7 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('tags');
-            $table->integer('views');
+            $table->string('duration');
             $table->integer('star_one');
             $table->integer('star_two');
             $table->integer('star_three');
