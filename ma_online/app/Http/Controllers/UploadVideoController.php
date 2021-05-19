@@ -113,20 +113,33 @@ class UploadVideoController extends Controller
         $tagNameList = implode(",", $tagNameList); // change ID array list to a string
 
         // Duration Formatting
-        // $duration = new DateInterval($request->duration);
-
-        // if ($duration->h > 0) {
-        //     $formattedDur = $duration->format('%H:%I:%S');
-        // } else {
-        //     $formattedDur = $duration->format('%I:%S');
-        // }
+        function covtime($yt){
+            $yt=str_replace(['P','T'],'',$yt);
+            foreach(['D','H','M','S'] as $a){
+                $pos=strpos($yt,$a);
+                if($pos!==false) ${$a}=substr($yt,0,$pos); else { ${$a}=0; continue; }
+                $yt=substr($yt,$pos+1);
+            }
+            if($D>0){
+                $M=str_pad($M,2,'0',STR_PAD_LEFT);
+                $S=str_pad($S,2,'0',STR_PAD_LEFT);
+                return ($H+(24*$D)).":$M:$S"; // add days to hours
+            } elseif($H>0){
+                $M=str_pad($M,2,'0',STR_PAD_LEFT);
+                $S=str_pad($S,2,'0',STR_PAD_LEFT);
+                return "$H:$M:$S";
+            } else {
+                $S=str_pad($S,2,'0',STR_PAD_LEFT);
+                return "$M:$S";
+            }
+        }
 
         $videos = new videos;
         $videos->video_id = $request->video_id;
         $videos->title = $request->title;
         $videos->description = $request->description;
         $videos->tags = $tagNameList;
-        $videos->duration = $request->duration;
+        $videos->duration = covtime($request->duration);
         $videos->star_one = 0;
         $videos->star_two = 0;
         $videos->star_three = 0;
