@@ -7,7 +7,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <img src="img/logo-ma-online.png" class="h-8 relative image-center inline" alt="alt text">
+                        <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"" class="h-8 relative image-center inline" alt="alt text">
                         <a href="/" class="text-white pl-4 pt-1">
                             Ma.Online
                         </a>
@@ -108,15 +108,15 @@
                         <x-slot name="content">
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400">
-                                {{ __('Manage Account') }}
+                                {{ __('Beheer account') }}
                             </div>
 
                             <x-jet-dropdown-link href="{{ route('upload') }}">
-                                {{ __('Upload') }}
+                                {{ __('Uploaden') }}
                             </x-jet-dropdown-link>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Settings') }}
+                                {{ __('Profiel updaten') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -134,7 +134,7 @@
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
                                                      onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('Uitloggen') }}
                                 </x-jet-dropdown-link>
                             </form>
                         </x-slot>

@@ -1,11 +1,15 @@
 <link rel="stylesheet" href="{{ asset('css/style.css')}}">
 <x-jet-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        <div class="text-ma-white">
+        {{ __('Profiel Details') }}
+        </div>
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        <div class="text-ma-white update-description">
+        {{ __('Update je profiel, informatie en email adres.') }}
+        </div>
     </x-slot>
 
     <x-slot name="form">

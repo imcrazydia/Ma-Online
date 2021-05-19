@@ -47,6 +47,10 @@ h1 {
     transform: translateX(-50%)
 }
 
+.update-description {
+    font-size: 13px;
+}
+
 [type='text'],
 [type='email'],
 [type='url'],
@@ -72,6 +76,10 @@ select {
 
 .bg-ma-dark-gray {
     background-color: #272727;
+}
+
+.bg-ma-light-gray {
+    background-color: #535353;
 }
 
 .bg-ma-magenta {
@@ -113,6 +121,10 @@ select {
     background: gray;
 }
 
+/*Styling input fields*/
+input {
+    background-color: #000
+}
 
 /* Voor ipad-pro blade view padding */
 
