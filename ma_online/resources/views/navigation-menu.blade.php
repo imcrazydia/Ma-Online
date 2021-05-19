@@ -7,8 +7,9 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"" class="h-8 relative image-center inline" alt="alt text">
-                        <a href="/" class="text-white pl-4 pt-1">
+                        <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"" class="h-8 relative image-center inline"
+                        alt="alt text">
+                        <a href="/" class="text-white font-extrabold text-2xl pl-4 pt-1">
                             Ma.Online
                         </a>
                     </a>
@@ -23,6 +24,11 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
+
+                <input type="text"
+                       class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
+                       placeholder="Zoeken..." maxlength="245">
+
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">

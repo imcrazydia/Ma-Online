@@ -14,7 +14,7 @@
                     <div class="px-4 py-5 space-y-6 sm:p-6">
                         <div class="grid grid-cols-3 gap-6">
                             <div class="col-span-3 sm:col-span-2">
-                                <label for="video_link" class="block text-sm font-medium text-white">
+                                <label for="video_link" class="block text-sm font-medium text-ma-white">
                                     Link invoeren
                                 </label>
                                 <div class="mt-1 flex rounded-md shadow-sm">

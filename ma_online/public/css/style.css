@@ -66,8 +66,10 @@ h1 {
 [multiple],
 textarea,
 select {
-    color: #000;
+    color: #fff;
 }
+
+
 
 /*Custom colors*/
 .bg-ma-gray {
