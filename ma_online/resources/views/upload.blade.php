@@ -55,6 +55,8 @@
                                                  alt="">
                                             <input type="hidden" name="video_id" id="video_id"
                                                    value="{{ $video->items['0']->id }}">
+                                            <input type="hidden" name="duration" id="duration"
+                                                   value="{{ $video->items['0']->contentDetails->duration }}">
                                         </div>
                                     </div>
                                 </div>
