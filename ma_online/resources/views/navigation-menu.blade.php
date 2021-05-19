@@ -16,7 +16,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('profiel') }}" :active="request()->routeIs('profiel')">
+                    <x-jet-nav-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" :active="request()->routeIs('profiel')">
                         {{ __('Profiel') }}
                     </x-jet-nav-link>
                 </div>
@@ -161,7 +161,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('profiel') }}" :active="request()->routeIs('profiel')">
+            <x-jet-responsive-nav-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" :active="request()->routeIs('profiel')">
                 {{ __('Profiel') }}
             </x-jet-responsive-nav-link>
         </div>
