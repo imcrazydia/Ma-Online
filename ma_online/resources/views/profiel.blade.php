@@ -14,7 +14,7 @@
             </div>
         @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="overflow-hidden sm:rounded-lg">
+            <div class="overflow-hidden sm:rounded-lg text-ma-white">
                 @foreach ($videos as $video)
                     <div>
                         <a href="{{ route('video', ['id'=>$video->id]) }}">
