@@ -29,7 +29,7 @@
 
                     <div class="py-3">
                         @foreach ($tagNameList as $tag)
-                            <span class="text-white bg-magenta-100 py-1 px-2">{{ $tag->tag_title }}</span>
+                            <span class="px-2 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</span>
                         @endforeach
                     </div>
                 </div>
