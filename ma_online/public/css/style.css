@@ -47,6 +47,10 @@ h1 {
     transform: translateX(-50%)
 }
 
+.single-video {
+    min-height: 400px;
+}
+
 .update-description {
     font-size: 13px;
 }
@@ -137,6 +141,12 @@ input {
 @media only screen and (max-width: 1424px) {
     .authentication-width {
         padding: 40px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .breakpoint-phone {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
     }
 }
 
