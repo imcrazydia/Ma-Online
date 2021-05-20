@@ -47,7 +47,7 @@ h1 {
     transform: translateX(-50%)
 }
 
-.single-video {
+.single-video-inner {
     min-height: 400px;
 }
 

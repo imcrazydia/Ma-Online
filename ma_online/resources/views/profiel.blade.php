@@ -14,13 +14,15 @@
             </div>
         @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="breakpoint-phone overflow-hidden sm:rounded-lg text-ma-white grid grid-cols-3 gap-6">
+            <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
                 @foreach ($videos as $video)
-                   <div class="single-video bg-ma-light-gray p-4">
-                        <a href="{{ route('video', ['id'=>$video->id]) }}">
-                            <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
-                            <h2 class="text-white font-bold pt-4">{{ __($video->title) }}</h2>
-                        </a>
+                    <div class="single-video">
+                        <div class="single-video-inner bg-ma-light-gray p-4">
+                            <a href="{{ route('video', ['id'=>$video->id]) }}">
+                                <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                <h2 class="text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>

@@ -16,11 +16,11 @@
                 </div>
 
                 <!-- Navigation Links -->
-{{--                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">--}}
-{{--                    <x-jet-nav-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" :active="request()->routeIs('profiel')">--}}
-{{--                        {{ __('Profiel') }}--}}
-{{--                    </x-jet-nav-link>--}}
-{{--                </div>--}}
+                {{--                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">--}}
+                {{--                    <x-jet-nav-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" :active="request()->routeIs('profiel')">--}}
+                {{--                        {{ __('Profiel') }}--}}
+                {{--                    </x-jet-nav-link>--}}
+                {{--                </div>--}}
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -117,7 +117,8 @@
                                 {{ __('Beheer account') }}
                             </div>
 
-                            <x-jet-dropdown-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" :active="request()->routeIs('profiel')">
+                            <x-jet-dropdown-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}"
+                                                 :active="request()->routeIs('profiel')">
                                 {{ __('profiel') }}
                             </x-jet-dropdown-link>
 
@@ -171,7 +172,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" :active="request()->routeIs('profiel')">
+            <x-jet-responsive-nav-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}"
+                                       :active="request()->routeIs('profiel')">
                 {{ __('Profiel') }}
             </x-jet-responsive-nav-link>
         </div>
