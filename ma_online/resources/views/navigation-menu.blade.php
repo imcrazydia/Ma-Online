@@ -119,7 +119,7 @@
 
                             <x-jet-dropdown-link href="{{ route('profiel', ['user'=>Auth::user()->name]) }}"
                                                  :active="request()->routeIs('profiel')">
-                                {{ __('profiel') }}
+                                {{ __('Profiel') }}
                             </x-jet-dropdown-link>
 
                             <x-jet-dropdown-link href="{{ route('upload') }}">
@@ -127,7 +127,7 @@
                             </x-jet-dropdown-link>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Profiel updaten') }}
+                                {{ __('Settings') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
