@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('Profiel') }}
+        <h2 class="profiel-name font-normal text-xl text-white leading-tight">
+            <span>{{ Auth::user()->name }}</span>
         </h2>
     </x-slot>
 
@@ -21,7 +21,14 @@
                             <a href="{{ route('video', ['id'=>$video->id]) }}">
                                 <img src="https://img.youtube.com/vi/{{ $video->video_id }}/maxresdefault.jpg" alt="">
                                 <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
-                                <p class="text-white text-sm">Test-user</p>
+                                <p class="text-white text-sm">
+                                    {{ __($video->name) }}
+                                    {{--                                    <pre>--}}
+                                    {{--                                        <?php--}}
+                                    {{--                                        print_r ($video);--}}
+                                    {{--                                        ?>--}}
+                                    {{--                                    </pre>--}}
+                                </p>
                             </a>
                         </div>
                     </div>

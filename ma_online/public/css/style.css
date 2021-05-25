@@ -51,8 +51,11 @@ h1 {
     min-height: 200px;
 }
 
+.profiel-name span {
+}
+
 .video-title {
-    min-height: 65px;
+    min-height: 100px;
 }
 
 .update-description {

@@ -23,6 +23,12 @@
                         <h2 class="text-ma-white font-bold text-2xl pb-3">
                             {{ __($video->title) }}
                         </h2>
+                        <p class="text-white text-sm">
+{{--                            {{ __($video->name) }}--}}
+<!--                            --><?php
+//                            print_r ($video);
+//                            ?>
+                        </p>
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
                     </div>
                     @endforeach
