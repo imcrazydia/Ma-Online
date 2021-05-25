@@ -17,10 +17,11 @@
             <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
                 @foreach ($videos as $video)
                     <div class="single-video">
-                        <div class="single-video-inner bg-ma-light-gray p-4">
+                        <div class="single-video-inner p-4">
                             <a href="{{ route('video', ['id'=>$video->id]) }}">
                                 <img src="https://img.youtube.com/vi/{{ $video->video_id }}/maxresdefault.jpg" alt="">
-                                <h2 class="text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                                <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                                <p class="text-white text-sm">Test-user</p>
                             </a>
                         </div>
                     </div>

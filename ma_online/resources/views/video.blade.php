@@ -23,11 +23,11 @@
                         <h2 class="text-ma-white font-bold text-2xl pb-3">
                             {{ __($video->title) }}
                         </h2>
-                        <p class="text-white text-sm pt-2 border-t-2">{{ $video->description }}</p>
+                        <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
                     </div>
                     @endforeach
 
-                    <div class="py-3">
+                    <div class="mt-8 py-3">
                         @foreach ($tagNameList as $tag)
                             <span class="px-2 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</span>
                         @endforeach
