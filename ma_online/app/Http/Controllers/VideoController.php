@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\videos;
 use Auth;
 
 class VideoController extends Controller
@@ -57,6 +58,27 @@ class VideoController extends Controller
         } else {
             return view('welcome');
         }
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate(
+            [
+                'title' => 'required|max:255',
+                'description' => 'max:255',
+            ],
+            [
+                'title.required' => 'Titel is vereist',
+                'tags.required' => 'Tags zijn vereist',
+            ]
+        );
+
+        $videos = videos::find($request->id);
+        $videos->title = $request->title;
+        $videos->description = $request->description;
+        $videos->save();
+        return redirect()->route('profiel', ['user'=>Auth::user()->name])
+        ->with('success','Video is succesvol bewerkt.');
     }
 
     public function delete($id, $user)

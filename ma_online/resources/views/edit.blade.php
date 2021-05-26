@@ -10,7 +10,7 @@
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <div class="mt-5 md:mt-0 md:col-span-2">
                     @foreach ($videos as $video)
-                        <form action="" method="POST">
+                        <form action="{{ route('update') }}" method="POST">
                             @csrf
 
                             <div class="px-4 py-5 space-y-6 sm:p-6">
@@ -21,6 +21,8 @@
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                            <input type="hidden" name="id" id="id"
+                                                   value="{{ $video->id }}">
                                         </div>
                                     </div>
                                 </div>
