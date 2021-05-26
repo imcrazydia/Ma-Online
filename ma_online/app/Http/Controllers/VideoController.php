@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 // use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class VideoController extends Controller
 {
@@ -42,5 +43,66 @@ class VideoController extends Controller
         }
 
         return view('video',compact('videos', 'tagNameList', 'uploader'));
+    }
+
+    public function edit($id, $user)
+    {
+        if ($user == Auth::user()->id) {
+            // Get video from id parameter
+            $videos = DB::table('videos')
+            ->where('id', $id ) // Get video id from video parameter
+            ->get();
+
+            return view('edit', compact('videos'));
+        } else {
+            return view('welcome');
+        }
+    }
+
+    public function delete($id, $user)
+    {
+        if ($user == Auth::user()->id) {
+            // Get video from id parameter
+            $videos = DB::table('videos')
+            ->where('id', $id ) // Get video id from video parameter
+            ->get();
+            return view('delete', compact('videos'));
+        } else {
+            return view('welcome');
+        }
+    }
+
+    public function destroy($id, $user)
+    {
+        if ($user == Auth::user()->id) {
+            // Get video from id parameter
+            $videos = DB::table('videos')
+            ->where('id', $id ) // Get video id from video parameter
+            ->get();
+
+            foreach ($videos as $video) {
+                $tags = explode(",", $video->tags);
+
+                foreach ($tags as $tag) {
+                    $items = DB::table('tags')
+                    ->where('id', $tag)
+                    ->get('tag_title');
+
+                    foreach ($items as $item) {
+                        $tag = DB::table('tags')->where("tag_title", $item->tag_title)->get();
+
+                        foreach ($tag as $currentTag) {
+                            DB::table('tags')->where("tag_title", $currentTag->tag_title)->decrement('amount_used');
+                        }
+                    }
+                }
+
+                DB::table('videos')->where('id', $id )->delete();
+
+                return redirect()->route('profiel', ['user'=>Auth::user()->name]);
+            }
+        } else {
+            return view('welcome');
+        }
     }
 }

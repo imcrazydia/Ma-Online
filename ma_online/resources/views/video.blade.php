@@ -27,6 +27,10 @@
                             {{ __($uploader) }}
                         </p>
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
+
+                        @if ($video->user_id == Auth::user()->id)
+                            <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}">Edit</a>
+                        @endif
                     </div>
                     @endforeach
 

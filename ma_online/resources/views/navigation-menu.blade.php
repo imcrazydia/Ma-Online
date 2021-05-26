@@ -7,7 +7,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
-                        <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"" class="h-8 relative image-center inline"
+                        <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png" class="h-8 relative image-center inline"
                         alt="alt text">
                         <a href="/" class="text-white font-extrabold text-2xl pl-4 pt-1">
                             Ma Online

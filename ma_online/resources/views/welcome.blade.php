@@ -413,7 +413,7 @@
     <div class="grid-container">
         <div class="grid-placement grid grid-cols-1 absolute text-center">
             <div class="grid-logo">
-                <img src="img/logo-ma-online.png" class="logo-size-welcome" alt="alt text">
+                <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png" class="logo-size-welcome" alt="alt text">
             </div>
             <div class="grid-text">
                 <div class="ma-online-logo text-center">Ma Online</div>
