@@ -416,7 +416,7 @@
                 <img src="img/logo-ma-online.png" class="logo-size-welcome" alt="alt text">
             </div>
             <div class="grid-text">
-                <div class="ma-online-logo text-center">Maonline</div>
+                <div class="ma-online-logo text-center">Ma Online</div>
             </div>
         </div>
     </div>

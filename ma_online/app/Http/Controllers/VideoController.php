@@ -9,23 +9,30 @@ class VideoController extends Controller
 {
     public function index($id)
     {
-
+        // Get video from id parameter
         $videos = DB::table('videos')
         ->where('id', $id ) // Get video id from video parameter
         ->get();
 
-        $tags = DB::table('videos')
-        ->where('id', $id )
-        ->get('tags');
 
         $tagNameList = array();
 
-        foreach ($tags as $tag) {
-            $tests = explode(",", $tag->tags);
+        foreach ($videos as $video) {
 
-            foreach ($tests as $test) {
+            // Get uploaders name from video id parameter
+            $videoUploader = DB::table('users')
+            ->where('id', $video->user_id )
+            ->get('name');
+
+            foreach ($videoUploader as $uploader) {
+                $uploader = $uploader->name;
+            }
+
+            $tags = explode(",", $video->tags);
+
+            foreach ($tags as $tag) {
                 $items = DB::table('tags')
-                ->where('id', $test )
+                ->where('id', $tag)
                 ->get('tag_title');
 
                 foreach ($items as $item) {
@@ -34,6 +41,6 @@ class VideoController extends Controller
             }
         }
 
-        return view('video',compact('videos', 'tagNameList'));
+        return view('video',compact('videos', 'tagNameList', 'uploader'));
     }
 }

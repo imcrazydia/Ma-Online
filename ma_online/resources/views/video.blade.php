@@ -24,10 +24,7 @@
                             {{ __($video->title) }}
                         </h2>
                         <p class="text-white text-sm">
-{{--                            {{ __($video->name) }}--}}
-<!--                            --><?php
-//                            print_r ($video);
-//                            ?>
+                            {{ __($uploader) }}
                         </p>
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
                     </div>
