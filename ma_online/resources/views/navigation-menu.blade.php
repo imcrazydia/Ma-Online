@@ -24,11 +24,12 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-
-                <input type="text"
-                       class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
-                       placeholder="Zoeken..." maxlength="245">
-
+                <form action="{{ route('search') }}" method="GET">
+                    @csrf
+                    <input type="text" name="search"
+                    class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
+                    placeholder="Zoeken..." maxlength="245">
+                </form>
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">

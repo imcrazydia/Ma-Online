@@ -32,3 +32,5 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/update', [VideoControlle
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/video/{id}/delete/{user}', [VideoController::class, 'delete'])->name('delete');
 Route::middleware(['auth:sanctum', 'verified'])->get('/video/{id}/destroy/{user}', [VideoController::class, 'destroy'])->name('destroy');
+
+Route::get('/search/', [VideoController::class, 'search'])->name('search');

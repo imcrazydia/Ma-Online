@@ -127,4 +127,19 @@ class VideoController extends Controller
             return view('welcome');
         }
     }
+
+    public function search(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+
+        // Search in the title and body columns from the videos table
+        $results = videos::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->get();
+
+        // Return the search view with the results compacted
+        return view('search', compact('results'));
+    }
 }
