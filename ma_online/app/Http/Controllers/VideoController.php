@@ -64,8 +64,8 @@ class VideoController extends Controller
     {
         $request->validate(
             [
-                'title' => 'required|max:255',
-                'description' => 'max:255',
+                'title' => 'required|max:95',
+                'description' => 'max:3990',
             ],
             [
                 'title.required' => 'Titel is vereist',
