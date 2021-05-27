@@ -133,11 +133,27 @@ class VideoController extends Controller
         // Get the search value from the request
         $search = $request->input('search');
 
-        // Search in the title and body columns from the videos table
-        $results = videos::query()
+        $tag_title = strtolower($search);
+
+        $tags = DB::table('tags')
+        ->where('tag_title', 'LIKE', "%{$tag_title}%" )
+        ->get('id');
+
+        if (!empty($tags[0])) {
+
+            // Search in the title, body and tags columns from the videos table
+            $results = videos::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->orWhere('tags', 'LIKE', "%{$tags[0]->id}%")
+            ->get();
+        } else {
+            // Search in the title and body columns from the videos table
+            $results = videos::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
+        }
 
         // Return the search view with the results compacted
         return view('search', compact('results'));

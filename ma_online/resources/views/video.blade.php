@@ -36,9 +36,13 @@
                     </div>
                     @endforeach
 
-                    <div class="mt-8 py-3">
+                    <div class="mt-4 flex">
                         @foreach ($tagNameList as $tag)
-                            <span class="px-2 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</span>
+                            <form action="{{ route('search') }}" method="GET">
+                                @csrf
+                                <button type="submit" class="px-2 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</button>
+                                <input type="hidden" name="search" value="{{ $tag->tag_title }}">
+                            </form>
                         @endforeach
                     </div>
                 </div>
