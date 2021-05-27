@@ -10,9 +10,9 @@
                                 <a href="{{ route('video', ['id'=>$result->id]) }}">
                                     <img src="https://img.youtube.com/vi/{{ $result->video_id }}/maxresdefault.jpg" alt="">
                                     <h2 class="video-title text-white font-bold pt-4">{{ __($result->title) }}</h2>
-                                    {{-- <p class="text-white text-sm">
-                                        {{ __($user) }}
-                                    </p> --}}
+                                    <p class="text-white text-sm">
+                                        {{ App\Models\User::where(['id' => $result->user_id])->pluck('name')->first() }}
+                                    </p>
                                 </a>
                             </div>
                         </div>

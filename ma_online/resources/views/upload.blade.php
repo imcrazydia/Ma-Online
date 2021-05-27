@@ -2,11 +2,6 @@
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            @if(session('status'))
-                <div class="px-4 py-5 bg-green-400 space-y-6 sm:p-6">
-                    {{ session('status') }}
-                </div>
-            @endif
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form action="{{ route('create') }}" method="POST">
                     @csrf
@@ -124,6 +119,5 @@
                 @endif
             </div>
         </div>
-    </div>
     </div>
 </x-app-layout>
