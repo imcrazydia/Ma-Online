@@ -17,6 +17,7 @@ class ProfileController extends Controller
         $videos = DB::table('videos')
         ->select('*')
         ->where('user_id', $userID ) // Get user id from user parameter
+        ->orderByDesc('updated_at')
         ->get();
 
         return view('profiel',compact('videos', 'user'));

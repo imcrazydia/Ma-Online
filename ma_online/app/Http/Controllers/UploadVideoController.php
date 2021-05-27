@@ -17,8 +17,6 @@ class UploadVideoController extends Controller
 
     public function index()
     {
-        // $videos = \App\Models\videos::all();
-        // return view('welcome',compact('videos'));
         return view('welcome');
     }
 
@@ -34,6 +32,7 @@ class UploadVideoController extends Controller
         ]);
 
         $url = filter_var($request->video_link, FILTER_SANITIZE_URL);
+        $url = htmlspecialchars($url);
 
         function getYoutubeVideoID($url){
             $queryString = parse_url($url,PHP_URL_QUERY);
@@ -51,8 +50,8 @@ class UploadVideoController extends Controller
 
         $data = json_decode(file_get_contents($api_ur));
 
-        $data->items['0']->snippet->title = Str::of($data->items['0']->snippet->title)->limit(240);
-        $data->items['0']->snippet->description = Str::of($data->items['0']->snippet->description)->limit(240);
+        $data->items['0']->snippet->title = Str::of($data->items['0']->snippet->title)->limit(95);
+        $data->items['0']->snippet->description = Str::of($data->items['0']->snippet->description)->limit(3990);
 
         return view('upload', ['video' => $data]);
     }
@@ -64,8 +63,8 @@ class UploadVideoController extends Controller
             [
                 'video_id' => 'required',
                 'duration' => 'required',
-                'title' => 'required|max:255',
-                'description' => 'max:255',
+                'title' => 'required|max:95',
+                'description' => 'max:3990',
                 'tags' => 'required|max:255',
             ],
             [
@@ -74,7 +73,8 @@ class UploadVideoController extends Controller
             ]
         );
 
-        $tags = strtolower($request->tags);
+        $tags = htmlspecialchars($request->tags);
+        $tags = strtolower($tags);
         $tags = str_replace(' ', '_', $tags);
         $tags = explode(",",$tags);
 
@@ -136,8 +136,8 @@ class UploadVideoController extends Controller
 
         $videos = new videos;
         $videos->video_id = $request->video_id;
-        $videos->title = $request->title;
-        $videos->description = $request->description;
+        $videos->title = htmlspecialchars($request->title);
+        $videos->description = htmlspecialchars($request->description);
         $videos->tags = $tagNameList;
         $videos->duration = covtime($request->duration);
         $videos->star_one = 0;

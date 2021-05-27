@@ -74,8 +74,8 @@ class VideoController extends Controller
         );
 
         $videos = videos::find($request->id);
-        $videos->title = $request->title;
-        $videos->description = $request->description;
+        $videos->title = htmlspecialchars($request->title);
+        $videos->description = htmlspecialchars($request->description);
         $videos->save();
         return redirect()->route('profiel', ['user'=>Auth::user()->name])
         ->with('success','Video is succesvol bewerkt.');
