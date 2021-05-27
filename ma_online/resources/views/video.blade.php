@@ -24,7 +24,9 @@
                             {{ __($video->title) }}
                         </h2>
                         <p class="text-white text-sm">
-                            {{ __($uploader) }}
+                            <a href="{{ route('profiel', ['user'=>$uploader]) }}">
+                                {{ __($uploader) }}
+                            </a>
                         </p>
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
 
