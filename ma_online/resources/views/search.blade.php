@@ -8,7 +8,7 @@
                         <div class="single-video">
                             <div class="single-video-inner p-4">
                                 <a href="{{ route('video', ['id'=>$result->id]) }}">
-                                    <img src="https://img.youtube.com/vi/{{ $result->video_id }}/maxresdefault.jpg" alt="">
+                                    <img src="https://img.youtube.com/vi/{{ $result->video_id }}/0.jpg" alt="">
                                     <h2 class="video-title text-white font-bold pt-4">{{ __($result->title) }}</h2>
                                 </a>
                                 <p class="text-white text-sm">

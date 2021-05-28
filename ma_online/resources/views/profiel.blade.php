@@ -25,6 +25,7 @@
                                     <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
                                 </div>
                                 <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                                <h3 class="mb-3 text-ma-light-gray">Duur van video: <span class="text-ma-white text-s">{{ __($video->duration) }}</span></h3>
                                 <p class="text-white text-sm">
                                     {{ __($user) }}
                                 </p>
