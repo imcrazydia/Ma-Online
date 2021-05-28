@@ -194,17 +194,26 @@
                     </div>
                 @endif
 
-                <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-                </div>
-            </div>
+{{--                <div>--}}
+{{--                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>--}}
+{{--                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+
 
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
+                <form action="{{ route('search') }}" method="GET">
+                    @csrf
+                    <input class="mr-3" type="text" name="search"
+                           class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
+                           placeholder="Zoeken..." maxlength="245">
+                </form>
+
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                                            :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Profiel') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
