@@ -21,7 +21,9 @@
                     <div class="single-video">
                         <div class="single-video-inner p-4">
                             <a href="{{ route('video', ['id'=>$video->id]) }}">
-                                <img src="https://img.youtube.com/vi/{{ $video->video_id }}/maxresdefault.jpg" alt="">
+                                <div class="thumbnail-controller">
+                                    <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                </div>
                                 <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
                                 <p class="text-white text-sm">
                                     {{ __($user) }}

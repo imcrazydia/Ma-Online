@@ -31,7 +31,10 @@
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
 
                         @if ($video->user_id == Auth::user()->id)
-                            <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}">Edit</a>
+                            <button class="bg-red-500 mt-7 inline-flex justify-center py-1 px-4 border border-transparent
+                            shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}">Edit</a>
+                            </button>
                         @endif
                     </div>
                     @endforeach
@@ -40,7 +43,8 @@
                         @foreach ($tagNameList as $tag)
                             <form action="{{ route('search') }}" method="GET">
                                 @csrf
-                                <button type="submit" class="px-2 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</button>
+                                <button type="submit"
+                                        class="px-2 m-1 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</button>
                                 <input type="hidden" name="search" value="{{ $tag->tag_title }}">
                             </form>
                         @endforeach

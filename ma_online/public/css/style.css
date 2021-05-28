@@ -35,16 +35,36 @@ h1 {
     font-size: 65px;
 }
 
+.modal-background {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000;
+    z-index: 5;
+    opacity: 60%;
+}
+
 .authentication-position {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
 
+.delete-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .image-center {
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%)
+}
+
+.cancel-button {
+    min-width: 110px;
 }
 
 .single-video-inner {
@@ -178,4 +198,12 @@ input {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/*Video verwijderen breakpoint phone*/
+@media only screen and (max-width: 500px) {
+    .delete-modal {
+        width: 100%;
+        left: 44%;
+    }
 }
