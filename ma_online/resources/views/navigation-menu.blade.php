@@ -8,7 +8,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
                         <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png" class="h-8 relative image-center inline"
-                        alt="alt text">
+                             alt="alt text">
                         <a href="/" class="text-white font-extrabold text-2xl pl-4 pt-1">
                             Ma Online
                         </a>
@@ -24,11 +24,14 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <form action="{{ route('search') }}" method="GET">
+                <form class="mr-9" action="{{ route('search') }}" method="GET">
                     @csrf
-                    <input type="text" name="search"
-                    class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
-                    placeholder="Zoeken..." maxlength="245">
+                    <input class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm" type="text" name="search"
+                           placeholder="Zoeken..." maxlength="245">
+                    <button class="search-button inline-block search-button bg-ma-magenta absolute" type="submit">
+                        <img class="search-button-inner"
+                             src="https://i.ibb.co/cKWmvxf/Magnifying-glass-icon-svg-copy.png">
+                    </button>
                 </form>
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -194,79 +197,78 @@
                     </div>
                 @endif
 
-{{--                <div>--}}
-{{--                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>--}}
-{{--                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+                {{--                <div>--}}
+                {{--                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>--}}
+                {{--                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>--}}
+                {{--                </div>--}}
+                {{--            </div>--}}
 
 
+                <div class="mt-3 space-y-1">
+                    <!-- Account Management -->
+                    <form action="{{ route('search') }}" method="GET">
+                        @csrf
+                        <input class="mr-3" type="text" name="search"
+                               class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
+                               placeholder="Zoeken..." maxlength="245">
+                    </form>
 
-            <div class="mt-3 space-y-1">
-                <!-- Account Management -->
-                <form action="{{ route('search') }}" method="GET">
-                    @csrf
-                    <input class="mr-3" type="text" name="search"
-                           class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
-                           placeholder="Zoeken..." maxlength="245">
-                </form>
-
-                <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
-                                           :active="request()->routeIs('profile.show')">
-                    {{ __('Profiel') }}
-                </x-jet-responsive-nav-link>
-
-                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
-                                               :active="request()->routeIs('api-tokens.index')">
-                        {{ __('API Tokens') }}
-                    </x-jet-responsive-nav-link>
-                @endif
-
-            <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-jet-responsive-nav-link>
-                </form>
-
-                <!-- Team Management -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="border-t border-gray-200"></div>
-
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Team') }}
-                    </div>
-
-                    <!-- Team Settings -->
-                    <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
-                                               :active="request()->routeIs('teams.show')">
-                        {{ __('Team Settings') }}
+                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
+                                               :active="request()->routeIs('profile.show')">
+                        {{ __('Profiel') }}
                     </x-jet-responsive-nav-link>
 
-                    @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
-                        <x-jet-responsive-nav-link href="{{ route('teams.create') }}"
-                                                   :active="request()->routeIs('teams.create')">
-                            {{ __('Create New Team') }}
+                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                        <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
+                                                   :active="request()->routeIs('api-tokens.index')">
+                            {{ __('API Tokens') }}
                         </x-jet-responsive-nav-link>
-                    @endcan
+                    @endif
 
-                    <div class="border-t border-gray-200"></div>
+                <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                    <!-- Team Switcher -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Switch Teams') }}
-                    </div>
+                        <x-jet-responsive-nav-link href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-jet-responsive-nav-link>
+                    </form>
 
-                    @foreach (Auth::user()->allTeams() as $team)
-                        <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link"/>
-                    @endforeach
-                @endif
+                    <!-- Team Management -->
+                    @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
+                        <div class="border-t border-gray-200"></div>
+
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Manage Team') }}
+                        </div>
+
+                        <!-- Team Settings -->
+                        <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}"
+                                                   :active="request()->routeIs('teams.show')">
+                            {{ __('Team Settings') }}
+                        </x-jet-responsive-nav-link>
+
+                        @can('create', Laravel\Jetstream\Jetstream::newTeamModel())
+                            <x-jet-responsive-nav-link href="{{ route('teams.create') }}"
+                                                       :active="request()->routeIs('teams.create')">
+                                {{ __('Create New Team') }}
+                            </x-jet-responsive-nav-link>
+                        @endcan
+
+                        <div class="border-t border-gray-200"></div>
+
+                        <!-- Team Switcher -->
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Switch Teams') }}
+                        </div>
+
+                        @foreach (Auth::user()->allTeams() as $team)
+                            <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link"/>
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
 </nav>

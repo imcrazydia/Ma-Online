@@ -412,20 +412,10 @@
 
     <table id="wrapper">
         <tr>
-            <td><img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png" alt="Ma online logo"/></td>
+            <td><img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"
+                     alt="Ma online logo"/></td>
         </tr>
     </table>
-
-    {{-- <div class="max-w-2sm mx-auto">
-    @if (Route::has('login'))
-        @foreach ($videos as $video)
-            @auth
-                <iframe width="340" height="240" src="{{ $video->video_link }}">
-                </iframe>
-            @endauth
-        @endforeach
-    @endif
-</div> --}}
 </div>
 </body>
 </html>

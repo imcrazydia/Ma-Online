@@ -82,6 +82,14 @@ html, body, #wrapper {
     min-height: 200px;
 }
 
+.search-button {
+    width: 38px;
+}
+
+.search-button-inner {
+    padding: 10px;
+}
+
 .video-title {
     min-height: 100px;
 }
