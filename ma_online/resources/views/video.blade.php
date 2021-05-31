@@ -41,7 +41,7 @@
 
                     <div class="mt-4 flex">
                         @foreach ($tagNameList as $tag)
-                            <form action="{{ route('search') }}" method="GET">
+                            <form action="{{ route('tagSearch') }}" method="GET">
                                 @csrf
                                 <button type="submit"
                                         class="px-2 m-1 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</button>

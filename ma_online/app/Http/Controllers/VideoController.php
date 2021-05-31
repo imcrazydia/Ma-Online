@@ -34,7 +34,7 @@ class VideoController extends Controller
 
             foreach ($tags as $tag) {
                 $items = DB::table('tags')
-                ->where('id', $tag)
+                ->where('tag_title', $tag)
                 ->get('tag_title');
 
                 foreach ($items as $item) {
@@ -107,7 +107,7 @@ class VideoController extends Controller
 
                 foreach ($tags as $tag) {
                     $items = DB::table('tags')
-                    ->where('id', $tag)
+                    ->where('tag_title', $tag)
                     ->get('tag_title');
 
                     foreach ($items as $item) {
@@ -134,27 +134,39 @@ class VideoController extends Controller
         $search = $request->input('search');
         $search = htmlspecialchars($search);
 
-        // $tag_title = strtolower($search);
+        $tag_title = strtolower($search);
 
-        // $tags = DB::table('tags')
-        // ->where('tag_title', 'LIKE', "%{$tag_title}%" )
-        // ->get('id');
+        $tag_result = DB::table('tags')
+        ->where('tag_title', 'LIKE', "%{$tag_title}%" )
+        ->get('tag_title');
 
-        // if (!empty($tags[0])) {
-
-            // Search in the title, body and tags columns from the videos table
-            // $results = videos::query()
-            // ->where('title', 'LIKE', "%{$search}%")
-            // ->orWhere('description', 'LIKE', "%{$search}%")
-            // ->orWhere('tags', 'LIKE', "%{$tags[0]->id}%")
-            // ->get();
-        // } else {
+        if (!empty($tag_result[0])) {
+    	    // Search in the title, body and tags columns from the videos table
+            $results = videos::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->orWhere('tags', 'LIKE', "%{$search}%")
+            ->get();
+        } else {
             // Search in the title and body columns from the videos table
             $results = videos::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->get();
-        // }
+        }
+
+        // Return the search view with the results compacted
+        return view('search', compact('results'));
+    }
+
+    public function tagSearch(Request $request)
+    {
+        // Get the search value from the request
+        $search = $request->input('search');
+
+        $results = videos::query()
+        ->where('tags', 'LIKE', "%{$search}%")
+        ->get();
 
         // Return the search view with the results compacted
         return view('search', compact('results'));

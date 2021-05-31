@@ -88,7 +88,7 @@ class UploadVideoController extends Controller
         $filterdTag = implode(",", $tagList);
         $tags = explode(",", $filterdTag);
 
-        $tagNameList = array(); // Array for IDs from used tags
+        $tagNameList = array(); // Array for tag_titles from used tags
 
         foreach ($tags as $tag) {
             $existingTag = DB::table('tags')->select("*")->where("tag_title", $tag)->exists();
@@ -96,8 +96,8 @@ class UploadVideoController extends Controller
             if ($existingTag) {
                 DB::table('tags')->where("tag_title", $tag)->increment('amount_used');
 
-                $existingTagID = DB::table('tags')->where("tag_title", $tag)->value('id');
-                array_push($tagNameList, $existingTagID);
+                $existingTagTitle = DB::table('tags')->where("tag_title", $tag)->value('tag_title');
+                array_push($tagNameList, $existingTagTitle);
             } else {
                 $newTag = new tags;
                 $newTag->tag_title = $tag;
@@ -105,12 +105,12 @@ class UploadVideoController extends Controller
 
                 $newTag->save();
 
-                $tagID = $newTag->id;
-                array_push($tagNameList, $tagID);
+                $tagTitle = $newTag->tag_title;
+                array_push($tagNameList, $tagTitle);
             }
         }
 
-        $tagNameList = implode(",", $tagNameList); // change ID array list to a string
+        $tagNameList = implode(",", $tagNameList); // change tag_title array list to a string
 
         // Duration Formatting
         function covtime($yt){
