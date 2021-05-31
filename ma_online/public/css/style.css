@@ -57,10 +57,21 @@ h1 {
     transform: translate(-50%, -50%);
 }
 
-.image-center {
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%)
+html, body, #wrapper {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#wrapper td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.welcome-image-width {
+    width: 30%;
 }
 
 .cancel-button {
@@ -69,9 +80,6 @@ h1 {
 
 .single-video-inner {
     min-height: 200px;
-}
-
-.profiel-name span {
 }
 
 .video-title {
@@ -171,6 +179,13 @@ input {
 @media only screen and (max-width: 1424px) {
     .authentication-width {
         padding: 40px;
+    }
+}
+
+/*Welcome image size controller*/
+@media only screen and (max-width: 411px) {
+    .welcome-image-width {
+        width: 60%;
     }
 }
 

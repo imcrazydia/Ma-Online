@@ -397,7 +397,7 @@
 <body class="antialiased">
 <div class="welcome-background relative items-top justify-center min-h-screen bg-ma-gray sm:items-center py-4 sm:pt-0">
     @if (Route::has('login'))
-        <div class="welcome-login hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
                 <a href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" class="text-xl text-ma-white">Profiel</a>
             @else
@@ -410,25 +410,11 @@
         </div>
     @endif
 
-    <div class="grid-container">
-        <div class="grid-placement grid grid-cols-1 absolute text-center">
-            <div class="grid-logo">
-                <img src="https://i.ibb.co/FHTDTKx/logo-ma-online.png" class="logo-size-welcome" alt="alt text">
-            </div>
-            <div class="grid-text">
-                <div class="ma-online-logo text-center">Ma Online</div>
-            </div>
-        </div>
-    </div>
-
-
-    {{--    <div class="welcome-logo text-center">--}}
-    {{--        <div class="welcome-logo-inner absolute">--}}
-    {{--            <img src="img/logo-ma-online.png" class="ma-online-logo-photo" alt="alt text">--}}
-    {{--            <div class="ma-online-logo">Ma.Online</div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-
+    <table id="wrapper">
+        <tr>
+            <td><img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png" alt="Ma online logo"/></td>
+        </tr>
+    </table>
 
     {{-- <div class="max-w-2sm mx-auto">
     @if (Route::has('login'))
