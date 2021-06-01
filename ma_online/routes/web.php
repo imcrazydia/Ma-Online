@@ -43,5 +43,7 @@ Route::middleware(['auth:sanctum', 'verified', 'student'])->group(function () {
 
 Route::group(['prefix'     => 'admin',
               'middelware' => 'auth:sanctum', 'verified', 'admin'], function() {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+    Route::get('/videos', [AdminController::class, 'showVideos'])->name('showVideos');
+    Route::get('/gebruikers', [AdminController::class, 'showUsers'])->name('showUsers');
+    Route::get('/tags', [AdminController::class, 'showTags'])->name('showTags');
 });

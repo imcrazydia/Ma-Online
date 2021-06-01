@@ -37,12 +37,14 @@
                     </button>
                 </form>
 
-                <div class="upload-button-container ml-4">
-                    <div
-                        class="upload-button bg-magenta-100 hover:bg-lightgreen-100 transition-all upload-button inline-block text-white relative">
-                        <a href="{{ route('upload') }}"><i class="fas fa-upload absolute upload-button-inner"></i></a>
+                @if (Auth::user()->role <= 3)
+                    <div class="upload-button-container ml-4">
+                        <div
+                            class="upload-button bg-magenta-100 hover:bg-lightgreen-100 transition-all upload-button inline-block text-white relative">
+                            <a href="{{ route('upload') }}"><i class="fas fa-upload absolute upload-button-inner"></i></a>
+                        </div>
                     </div>
-                </div>
+                @endif
 
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
