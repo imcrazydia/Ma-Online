@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadVideoController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,9 +42,9 @@ Route::middleware(['auth:sanctum', 'verified', 'student'])->group(function () {
     Route::get('/video/{id}/destroy/{user}', [VideoController::class, 'destroy'])->name('destroy');
 });
 
-Route::group(['prefix'     => 'admin',
-              'middelware' => 'auth:sanctum', 'verified', 'admin'], function() {
-    Route::get('/videos', [AdminController::class, 'showVideos'])->name('showVideos');
-    Route::get('/gebruikers', [AdminController::class, 'showUsers'])->name('showUsers');
-    Route::get('/tags', [AdminController::class, 'showTags'])->name('showTags');
+Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function() {
+    Route::get('/admin/videos', [AdminController::class, 'showVideos'])->name('showVideos');
+    Route::get('/admin/video/{id}/destroy', [AdminController::class, 'deleteVideo'])->name('deleteVideo');
+    // Route::get('/admin/gebruikers', [AdminController::class, 'showUsers'])->name('showUsers');
+    // Route::get('/admin/tags', [AdminController::class, 'showTags'])->name('showTags');
 });

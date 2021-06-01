@@ -149,9 +149,9 @@
                                 {{ __('Profiel') }}
                             </x-jet-dropdown-link>
 
-                            {{--                            <x-jet-dropdown-link href="{{ route('upload') }}">--}}
-                            {{--                                {{ __('Uploaden') }}--}}
-                            {{--                            </x-jet-dropdown-link>--}}
+                            <x-jet-dropdown-link href="{{ route('showVideos') }}">
+                                {{ __('Videos') }}
+                            </x-jet-dropdown-link>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Instellingen') }}
