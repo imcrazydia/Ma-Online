@@ -104,6 +104,11 @@ html, body, #wrapper {
     transform: translate(-50%, -50%);
 }
 
+.upload-button {
+    height: 38px;
+    width: 38px;
+}
+
 .video-title {
     padding-bottom: 10px;
 }
@@ -170,6 +175,10 @@ select {
 
 .text-magenta:hover {
     color: #fff;
+}
+
+.text-green:hover {
+    color: #5ac8c6;
 }
 
 .welcome-login {

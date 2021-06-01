@@ -11,11 +11,11 @@
                                     <img src="https://img.youtube.com/vi/{{ $result->video_id }}/0.jpg" alt="">
                                     <h2 class="video-title text-white font-bold pt-4">{{ __($result->title) }}</h2>
                                 </a>
-                                <p class="text-white text-sm">
-                                    <img class="h-8 w-8 rounded-full object-cover"
+                                <p class="text-white text-sm text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">
+                                    <img class="h-8 w-8 rounded-full object-cover inline-block"
                                     src="{{ App\Models\User::where(['id' => $result->user_id])->pluck('profile_photo_path')->first() }}"
                                     alt="{{ App\Models\User::where(['id' => $result->user_id])->pluck('name')->first() }}"/>
-                                    <a href="{{ route('profiel', ['user'=>App\Models\User::where(['id' => $result->user_id])->pluck('name')->first()]) }}">
+                                    <a class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2" href="{{ route('profiel', ['user'=>App\Models\User::where(['id' => $result->user_id])->pluck('name')->first()]) }}">
                                         {{ App\Models\User::where(['id' => $result->user_id])->pluck('name')->first() }}
                                     </a>
                                 </p>

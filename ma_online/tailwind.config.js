@@ -17,6 +17,9 @@ module.exports = {
                 magenta: {
                     '100': '#E82681',
                 },
+                lightgreen: {
+                    '100': '#5ac8c6',
+                },
             },
         },
     },

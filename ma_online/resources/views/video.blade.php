@@ -25,7 +25,7 @@
                             {{ __($video->title) }}
                             @if ($video->user_id == Auth::user()->id)
                                 <button class="relative float-right m-1 bg-ma-green inline-flex justify-center py-1 px-4 border border-transparent
-                            shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hover:bg-magenta-100 transition-all">
                                     <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}"><i class="far fa-edit"></i><span>Bewerken</span></a>
                                 </button>
                             @endif
@@ -51,7 +51,7 @@
                             <form action="{{ route('tagSearch') }}" method="GET">
                                 @csrf
                                 <button type="submit"
-                                        class="px-2 m-1 text-white bg-magenta-100 py-1 rounded-md hover:bg-gray-500 transition-all">{{ $tag->tag_title }}</button>
+                                        class="px-2 m-1 text-white bg-magenta-100 py-1 rounded-md hover:bg-lightgreen-100 transition-all">{{ $tag->tag_title }}</button>
                                 <input type="hidden" name="search" value="{{ $tag->tag_title }}">
                             </form>
                         @endforeach

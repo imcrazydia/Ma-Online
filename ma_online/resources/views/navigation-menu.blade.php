@@ -34,6 +34,11 @@
                         <img class="search-button-inner"><i class="fas fa-search"></i>
                     </button>
                 </form>
+
+                <div class="upload-button bg-magenta-100 upload-button inline-block text-white">
+                    <a href="{{ route('upload') }}"><i class="fas fa-upload"></i></a>
+                </div>
+
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ml-3 relative">
@@ -132,9 +137,9 @@
                                 {{ __('Profiel') }}
                             </x-jet-dropdown-link>
 
-                            <x-jet-dropdown-link href="{{ route('upload') }}">
-                                {{ __('Uploaden') }}
-                            </x-jet-dropdown-link>
+                            {{--                            <x-jet-dropdown-link href="{{ route('upload') }}">--}}
+                            {{--                                {{ __('Uploaden') }}--}}
+                            {{--                            </x-jet-dropdown-link>--}}
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Settings') }}
@@ -208,13 +213,13 @@
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
                     <x-jet-responsive-nav-link>
-                    <form class="mr-9" action="{{ route('search') }}" method="GET">
-                        @csrf
-                        <input
-                            class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
-                            type="text" name="search"
-                            placeholder="Zoeken..." maxlength="245">
-                    </form>
+                        <form class="mr-9" action="{{ route('search') }}" method="GET">
+                            @csrf
+                            <input
+                                class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                                type="text" name="search"
+                                placeholder="Zoeken..." maxlength="245">
+                        </form>
                     </x-jet-responsive-nav-link>
 
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
@@ -222,7 +227,7 @@
                         {{ __('Profiel') }}
                     </x-jet-responsive-nav-link>
 
-                    <x-jet-responsive-nav-link  href="{{ route('upload') }}">
+                    <x-jet-responsive-nav-link href="{{ route('upload') }}">
                         {{ __('Uploaden') }}
                     </x-jet-responsive-nav-link>
 
