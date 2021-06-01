@@ -395,27 +395,33 @@
     </style>
 </head>
 <body class="antialiased">
-<div class="welcome-background relative items-top justify-center min-h-screen bg-ma-gray sm:items-center py-4 sm:pt-0">
-    @if (Route::has('login'))
-        <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
-            @auth
-                <a href="{{ route('profiel', ['user'=>Auth::user()->name]) }}" class="text-xl text-ma-white">Profiel</a>
-            @else
-                <a href="{{ route('login') }}" class="text-xl text-ma-white">Login</a>
+    @auth
+    <x-app-layout>
+    </x-app-layout>
+    @endauth
+    <div class="@auth @else welcome-background @endauth relative items-top justify-center min-h-screen bg-ma-gray sm:items-center py-4 sm:pt-0">
+        @if (Route::has('login'))
+            <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
+                @auth
+                @else
+                    <a href="{{ route('login') }}" class="text-xl text-ma-white">Login</a>
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-xl text-ma-white">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="ml-4 text-xl text-ma-white">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
 
-    <table id="wrapper">
-        <tr>
-            <td><img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"
-                     alt="Ma online logo"/></td>
-        </tr>
-    </table>
-</div>
+        @auth
+        @else
+            <table id="wrapper">
+                <tr>
+                    <td><img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"
+                            alt="Ma online logo"/></td>
+                </tr>
+            </table>
+        @endauth
+    </div>
 </body>
 </html>
