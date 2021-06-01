@@ -401,7 +401,7 @@
     {{-- INGELOGD --}}
     <x-app-layout>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
+            <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
                 @foreach ($videos as $video)
                 <div class="single-video">
                     <div class="single-video-inner p-4">
