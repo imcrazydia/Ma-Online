@@ -1,6 +1,7 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <div class="modal-background"></div>
+    <div class="modal-background relative">
+    <div class="modal-background-inner absolute"></div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative">
             <div class="mt-5 md:mt-0 md:col-span-2">
@@ -28,6 +29,7 @@
                                 </div>
                             </div>
                         </div>
+                </div>
 
 
 

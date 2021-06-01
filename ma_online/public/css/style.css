@@ -42,7 +42,11 @@ h1 {
 }
 
 .modal-background {
-    position: fixed;
+    overflow: hidden;
+
+}
+
+.modal-background-inner {
     height: 100vh;
     width: 100vw;
     background-color: #000;
@@ -236,7 +240,11 @@ input {
 /*Video verwijderen breakpoint phone*/
 @media only screen and (max-width: 500px) {
     .delete-modal {
-        width: 100%;
+        width: 90%;
         left: 44%;
+    }
+
+    .modal-footer {
+        margin-top: 0px;
     }
 }

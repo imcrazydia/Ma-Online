@@ -24,9 +24,9 @@
                         <h2 class="text-ma-white font-bold text-2xl pb-3">
                             {{ __($video->title) }}
                             @if ($video->user_id == Auth::user()->id)
-                                <button class="float-right m-1 bg-ma-green inline-flex justify-center py-1 px-4 border border-transparent
+                                <button class="relative float-right m-1 bg-ma-green inline-flex justify-center py-1 px-4 border border-transparent
                             shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}"><i class="far fa-edit"></i><span class="ml-1">Bewerken</span></a>
+                                    <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}"><i class="far fa-edit"></i><span>Bewerken</span></a>
                                 </button>
                             @endif
                         </h2>
