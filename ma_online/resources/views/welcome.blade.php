@@ -396,6 +396,9 @@
 </head>
 <body class="antialiased bg-ma-gray">
     @auth
+
+
+    {{-- INGELOGD --}}
     <x-app-layout>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
@@ -446,6 +449,9 @@
             alt="Ma online logo"/>
         @endauth
     </div>
+
+
+    {{-- NIET INGELOGD --}}
     <x-guest-layout>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
