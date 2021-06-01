@@ -64,7 +64,7 @@
                             </td>
                             <td class="px-16 py-2">
                                 <a href="{{ route('deleteUser', ['id'=>$user->id]) }}"
-                                   onclick="return confirm('Weet je zeker?')"
+                                   onclick="return confirm('Weet je zeker dat je de gebruiker {{$user->name}}, wilt verwijderen?')"
                                    class="bg-red-600 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Verwijderen</a>
                             </td>
                           </tr>
