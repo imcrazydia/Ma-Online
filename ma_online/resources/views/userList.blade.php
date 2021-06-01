@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tightt">
             <span>
-                {{ __('Video lijst') }}
+                {{ __('Gebruiker lijst') }}
             </span>
         </h2>
     </x-slot>
@@ -21,17 +21,17 @@
                     <thead class="justify-between">
                       <tr class="bg-gray-800">
                         <th class="px-16 py-2">
-                          <span class="text-gray-300">Titel</span>
+                          <span class="text-gray-300">Gebruiker</span>
                         </th>
                         <th class="px-16 py-2">
-                          <span class="text-gray-300">Aantal tags</span>
+                          <span class="text-gray-300">Email</span>
                         </th>
                         <th class="px-16 py-2">
-                          <span class="text-gray-300">Uploader</span>
+                          <span class="text-gray-300">Rol</span>
                         </th>
 
                         <th class="px-16 py-2">
-                          <span class="text-gray-300">Geupload op</span>
+                          <span class="text-gray-300">Geregistreerd op</span>
                         </th>
 
                         <th class="px-16 py-2">
@@ -39,27 +39,31 @@
                       </tr>
                     </thead>
                     <tbody class="bg-gray-200">
-                        @foreach ($videos as $video)
+                        @foreach ($users as $user)
                         <tr class="bg-white border-4 border-gray-200">
                             <td class="py-2">
-                                <span class="text-center ml-2 font-semibold">{{\Illuminate\Support\Str::limit($video->title, $limit = 40, $end = '...')}}</span>
-                            </td>
-                            <td class="px-16 py-2">
-                                <span>{{count(explode(',', $video->tags))}}</span>
-                            </td>
-                            <td class="px-16 py-2">
-                                {{ App\Models\User::where(['id' => $video->user_id])->pluck('name')->first() }}
-                                @if (App\Models\User::where(['id' => $video->user_id])->pluck('role')->first() == 1)
+                                <img class="h-8 w-8 rounded-full object-cover inline-block"
+                                src="{{ $user->profile_photo_path }}"
+                                alt="{{ $user->name }}" />
+
+                                {{ $user->name }}
+                                @if ($user->role == 1)
                                     <i class="fas fa-star text-magenta-100"></i>
-                                @elseif (App\Models\User::where(['id' => $video->user_id])->pluck('role')->first() == 2)
+                                @elseif ($user->role == 2)
                                     <i class="fas fa-check text-lightgreen-100"></i>
                                 @endif
                             </td>
                             <td class="px-16 py-2">
-                                <span>{{ $video->created_at->format('d-m-Y') }}</span>
+                                <span>{{ $user->email }}</span>
                             </td>
                             <td class="px-16 py-2">
-                                <a href="{{ route('deleteVideo', ['id'=>$video->id]) }}"
+                                <span>{{ App\Models\Role::where(['id' => $user->role])->pluck('role_name')->first() }}</span>
+                            </td>
+                            <td class="px-16 py-2">
+                                <span>{{ $user->created_at === NULL ? "00-00-0000" : $user->created_at->format('d-m-Y') }}</span>
+                            </td>
+                            <td class="px-16 py-2">
+                                <a href="{{ route('deleteUser', ['id'=>$user->id]) }}"
                                    onclick="return confirm('Weet je zeker?')"
                                    class="bg-red-600 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Verwijderen</a>
                             </td>

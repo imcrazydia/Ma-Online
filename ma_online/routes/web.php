@@ -45,6 +45,8 @@ Route::middleware(['auth:sanctum', 'verified', 'student'])->group(function () {
 Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function() {
     Route::get('/admin/videos', [AdminController::class, 'showVideos'])->name('showVideos');
     Route::get('/admin/video/{id}/destroy', [AdminController::class, 'deleteVideo'])->name('deleteVideo');
-    // Route::get('/admin/gebruikers', [AdminController::class, 'showUsers'])->name('showUsers');
+
+    Route::get('/admin/gebruikers', [AdminController::class, 'showUsers'])->name('showUsers');
+    Route::get('/admin/gebruiker/{id}/destroy', [AdminController::class, 'deleteUser'])->name('deleteUser');
     // Route::get('/admin/tags', [AdminController::class, 'showTags'])->name('showTags');
 });

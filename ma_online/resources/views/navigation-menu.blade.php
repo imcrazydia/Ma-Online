@@ -150,6 +150,10 @@
                             </x-jet-dropdown-link>
 
                             @if (Auth::user()->role == 1)
+                                <x-jet-dropdown-link href="{{ route('showUsers') }}">
+                                    {{ __('Gebruikers') }}
+                                </x-jet-dropdown-link>
+
                                 <x-jet-dropdown-link href="{{ route('showVideos') }}">
                                     {{ __('Videos') }}
                                 </x-jet-dropdown-link>
