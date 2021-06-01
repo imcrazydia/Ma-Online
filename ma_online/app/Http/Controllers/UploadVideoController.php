@@ -26,12 +26,17 @@ class UploadVideoController extends Controller
     {
 
         $request->validate([
-            'video_link' => 'required|url|max:255|in:youtube',
+            'video_link' => [
+                'required',
+                'url',
+                'max:255',
+                'regex:/^\bhttps:\/\/www\.youtube\.com\/watch\?v=\b/'
+            ],
         ],
         [
             'video_link.required' => 'Video link is vereist.',
             'video_link.url' => 'Video link is niet geldig.',
-            'video_link.in' => 'URL moet een youtube link zijn',
+            'video_link.regex' => 'URL moet een youtube link zijn',
         ]);
 
         $url = filter_var($request->video_link, FILTER_SANITIZE_URL);
