@@ -10,16 +10,18 @@ class ProfileController extends Controller
 {
     public function index($user)
     {
-        $userID = DB::table('users')
+        $userData = DB::table('users')
         ->where("name", $user)
-        ->value('id');
+        ->get();
+
+        $profilePic = $userData[0]->profile_photo_path; // Get profile picture
 
         $videos = DB::table('videos')
         ->select('*')
-        ->where('user_id', $userID ) // Get user id from user parameter
+        ->where('user_id', $userData[0]->id) // Get user id from user parameter
         ->orderByDesc('updated_at')
         ->get();
 
-        return view('profiel',compact('videos', 'user'));
+        return view('profiel',compact('videos', 'user', 'profilePic'));
     }
 }

@@ -26,6 +26,13 @@
                                 </div>
                                 <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
                                 <p class="mb-3 text-ma-white text-xs">{{ __($user) }} </p>
+                                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                    <button
+                                        class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                        <img class="h-8 w-8 rounded-full object-cover"
+                                            src="{{ $profilePic }}" alt="{{ $user }}"/>
+                                    </button>
+                                @endif
                             </a>
                         </div>
                     </div>
