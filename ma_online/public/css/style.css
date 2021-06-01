@@ -94,10 +94,14 @@ html, body, #wrapper {
 
 .search-button {
     width: 38px;
+    height: 38px;
+    color: #fff;
 }
 
-.search-button-inner {
-    padding: 10px;
+.login-logo {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .video-title {

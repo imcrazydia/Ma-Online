@@ -31,8 +31,7 @@
                         type="text" name="search"
                         placeholder="Zoeken..." maxlength="245">
                     <button class="search-button inline-block search-button bg-ma-magenta absolute" type="submit">
-                        <img class="search-button-inner"
-                             src="https://i.ibb.co/cKWmvxf/Magnifying-glass-icon-svg-copy.png">
+                        <img class="search-button-inner"><i class="fas fa-search"></i>
                     </button>
                 </form>
                 <!-- Teams Dropdown -->

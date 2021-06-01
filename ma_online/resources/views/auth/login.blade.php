@@ -18,7 +18,7 @@
         <form class="authentication-position" method="POST" action="{{ route('login') }}">
             @csrf
 
-            <img class="h-20 relative image-center" src="img/logo-ma-online.png">
+            <img class="login-logo h-20 relative image-center" src="img/logo-ma-online.png">
 
             <h1 class="pt-6 pb-6">Gebruik je studentennummer om in te loggen
                 <h1>
