@@ -27,16 +27,19 @@
                 <form class="mr-9" action="{{ route('search') }}" method="GET">
                     @csrf
                     <input
-                        class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                        class="relative inline-block focus:ring-lightgreen-100 focus:ring-lightgreen-100 flex-1 block w-full bg-ma-light-gray sm:text-sm"
                         type="text" name="search"
                         placeholder="Zoeken..." maxlength="245">
-                    <button class="search-button inline-block search-button bg-ma-magenta absolute" type="submit">
+                    <button
+                        class="search-button inline-block search-button bg-ma-magenta hover:bg-lightgreen-100 absolute transition-all"
+                        type="submit">
                         <img class="search-button-inner"><i class="fas fa-search"></i>
                     </button>
                 </form>
 
                 <div class="upload-button-container ml-4">
-                    <div class="upload-button bg-magenta-100 upload-button inline-block text-white relative">
+                    <div
+                        class="upload-button bg-magenta-100 hover:bg-lightgreen-100 transition-all upload-button inline-block text-white relative">
                         <a href="{{ route('upload') }}"><i class="fas fa-upload absolute upload-button-inner"></i></a>
                     </div>
                 </div>
@@ -105,9 +108,14 @@
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button
-                                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none transition">
+                                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none transition relative">
                                     <img class="profile-picture object-cover"
                                          src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}"/>
+                                    <div class="fold-out absolute text-white bg-magenta-100">
+                                        <div class="fold-out-inner relative">
+                                            <i class="fas fa-sort-down sort-down-inner absolute"></i>
+                                        </div>
+                                    </div>
                                 </button>
                             @else
                                 <span class="inline-flex rounded-md">

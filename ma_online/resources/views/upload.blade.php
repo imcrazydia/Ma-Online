@@ -14,7 +14,7 @@
                                 </label>
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <input type="text" name="video_link" id="video_link"
-                                           class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                                           class="focus:ring-lightgreen-100 focus:border-lightgreen-100 flex-1 block w-full bg-ma-light-gray sm:text-sm"
                                            placeholder="https://www.youtube.com/" maxlength="245">
                                 </div>
                                 @if ($errors->has('video_link'))
@@ -26,8 +26,8 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit"
-                                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
-                                    Check link
+                                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white transition-all hover:bg-lightgreen-100 bg-magenta-100">
+                                   Doorgaan
                                 </button>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <input type="text" name="title" id="title"
-                                                   class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray"
+                                                   class="focus:ring-lightgreen-100 focus:border-lightgreen-100 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray"
                                                    value="{{ $video->items['0']->snippet->title }}" maxlength="245">
                                         </div>
                                         <p class="mt-2 text-sm text-white">
@@ -80,7 +80,7 @@
                                     </label>
                                     <div class="mt-1">
                                         <textarea id="description" name="description" rows="5" maxlength="245"
-                                                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm bg-ma-light-gray">
+                                                  class="focus:ring-lightgreen-100 focus:border-lightgreen-100 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray">
                                             {{ $video->items['0']->snippet->description }}
                                         </textarea>
                                     </div>
@@ -97,20 +97,20 @@
                                     </label>
                                     <div class="mt-1">
                                         <textarea id="tags" name="tags" rows="3" maxlength="245"
-                                                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm bg-ma-light-gray"
+                                                  class="focus:ring-lightgreen-100 focus:border-lightgreen-100 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray"
                                                   placeholder="tag, tag"></textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-white">
                                         @if ($errors->has('tags'))
-                                            <span class="text-danger">{{ $errors->first('tags') }}</span>
+                                            <span class="text-danger text-gray-500 font-light text-sm">{{ $errors->first('tags') }}</span>
                                         @endif
-                                        Onderscheid de tags met een ,
+                                        Elke tag dient ingevoerd te worden met een , om de tag te onderscheiden.
                                     </p>
                                 </div>
                             </div>
                             <div class="px-4 py-3 text-right sm:px-6">
                                 <button type="submit"
-                                        class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        class="bg-ma-magenta hover:bg-lightgreen-100 transition-all inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     Upload
                                 </button>
                             </div>

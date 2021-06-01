@@ -126,6 +126,33 @@ html, body, #wrapper {
     width: 37px;
 }
 
+.thumbnail-controller img{
+    object-fit: cover;
+    opacity: 0.7;
+}
+
+.fold-out {
+    right: 0px;
+    bottom: 0px;
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+}
+
+.thumbnail-inner {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    z-index: 30;
+}
+
+.sort-down-inner {
+    top: 47%;
+    left: 50%;
+    transform: translate(-44%, -10%);
+}
+
 .video-title {
     padding-bottom: 10px;
 }
