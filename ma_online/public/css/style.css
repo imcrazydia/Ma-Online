@@ -107,6 +107,23 @@ html, body, #wrapper {
 .upload-button {
     height: 38px;
     width: 38px;
+    border-radius: 2px;
+}
+
+.upload-button-inner {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.upload-button-container {
+    margin-top: 6px;
+}
+
+.profile-picture {
+    border-radius: 2px;
+    height: 37px;
+    width: 37px;
 }
 
 .video-title {

@@ -26,7 +26,7 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit"
-                                        class="uppercase inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
+                                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
                                     Check link
                                 </button>
                             </div>

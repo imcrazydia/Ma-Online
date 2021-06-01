@@ -35,13 +35,15 @@
                     </button>
                 </form>
 
-                <div class="upload-button bg-magenta-100 upload-button inline-block text-white">
-                    <a href="{{ route('upload') }}"><i class="fas fa-upload"></i></a>
+                <div class="upload-button-container ml-4">
+                    <div class="upload-button bg-magenta-100 upload-button inline-block text-white relative">
+                        <a href="{{ route('upload') }}"><i class="fas fa-upload absolute upload-button-inner"></i></a>
+                    </div>
                 </div>
 
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="ml-3 relative">
+                    <div class="ml-5 relative">
                         <x-jet-dropdown align="right" width="60">
                             <x-slot name="trigger">
                                 <span class="inline-flex rounded-md">
@@ -103,8 +105,8 @@
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button
-                                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
-                                    <img class="h-8 w-8 rounded-full object-cover"
+                                    class="flex text-sm border-2 border-transparent rounded-full focus:outline-none transition">
+                                    <img class="profile-picture object-cover"
                                          src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}"/>
                                 </button>
                             @else
