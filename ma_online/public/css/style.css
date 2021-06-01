@@ -97,7 +97,7 @@ html, body, #wrapper {
 }
 
 .video-title {
-    min-height: 80px;
+    padding-bottom: 10px;
 }
 
 .update-description {
@@ -138,6 +138,10 @@ select {
 
 .bg-ma-magenta {
     background-color: #E82681;
+}
+
+.bg-ma-green {
+    background-color: #5ac8c6;
 }
 
 .text-ma-white {

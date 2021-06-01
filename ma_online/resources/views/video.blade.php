@@ -1,4 +1,5 @@
 <x-app-layout>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     @foreach ($videos as $video)
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-white leading-tight">
@@ -7,7 +8,7 @@
         </x-slot>
 
         <div class="py-6">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 bg-ma-light-gray">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                 <div class="youtube-video-container">
                     <iframe
                         width="560"
@@ -22,6 +23,12 @@
                     <div class="video-description">
                         <h2 class="text-ma-white font-bold text-2xl pb-3">
                             {{ __($video->title) }}
+                            @if ($video->user_id == Auth::user()->id)
+                                <button class="float-right m-1 bg-ma-green inline-flex justify-center py-1 px-4 border border-transparent
+                            shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}"><i class="far fa-edit"></i><span class="ml-1">Bewerken</span></a>
+                                </button>
+                            @endif
                         </h2>
                         <p class="text-white text-sm">
                             <a href="{{ route('profiel', ['user'=>$uploader]) }}">
@@ -30,12 +37,12 @@
                         </p>
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
 
-                        @if ($video->user_id == Auth::user()->id)
-                            <button class="bg-red-500 mt-7 inline-flex justify-center py-1 px-4 border border-transparent
-                            shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}">Edit</a>
-                            </button>
-                        @endif
+{{--                        @if ($video->user_id == Auth::user()->id)--}}
+{{--                            <button class="float-right m-1 bg-ma-green mt-7 inline-flex justify-center py-1 px-4 border border-transparent--}}
+{{--                            shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">--}}
+{{--                                <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}"><i class="far fa-edit"></i><span class="ml-1">Bewerken</span></a>--}}
+{{--                            </button>--}}
+{{--                        @endif--}}
                     </div>
                     @endforeach
 

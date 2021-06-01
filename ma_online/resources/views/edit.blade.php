@@ -58,10 +58,10 @@
                                 </div>
                             </div>
                             <div class="px-4 py-3 text-right sm:px-6">
-                                <a href="{{ route('delete', ['user'=>$video->user_id, 'id'=>$video->id]) }}" class="bg-red-600 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Verwijderen</a>
+                                <a href="{{ route('delete', ['user'=>$video->user_id, 'id'=>$video->id]) }}" class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"><i class="far fa-trash-alt"></i>Verwijderen</a>
                                 <button type="submit"
-                                    class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    Bewerk
+                                    class="bg-ma-green inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    <span class="">Toepassen</span>
                                 </button>
                             </div>
                         </form>

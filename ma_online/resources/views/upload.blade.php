@@ -7,7 +7,7 @@
                     @csrf
 
                     <div class="px-4 py-5 space-y-6 sm:p-6">
-                        <div class="grid grid-cols-3 gap-6">
+                        <div class="grid grid-cols-1 gap-6">
                             <div class="col-span-3 sm:col-span-2">
                                 <label for="video_link" class="block text-sm font-medium text-ma-white">
                                     Link invoeren
@@ -24,9 +24,9 @@
                                     Alleen youtube links
                                 </p>
                             </div>
-                            <div class="px-4 py-3 pt-6 text-right sm:px-6">
+                            <div class="text-right">
                                 <button type="submit"
-                                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
+                                        class="uppercase inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-magenta-100">
                                     Check link
                                 </button>
                             </div>

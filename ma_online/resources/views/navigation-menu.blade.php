@@ -26,8 +26,10 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <form class="mr-9" action="{{ route('search') }}" method="GET">
                     @csrf
-                    <input class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm" type="text" name="search"
-                           placeholder="Zoeken..." maxlength="245">
+                    <input
+                        class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                        type="text" name="search"
+                        placeholder="Zoeken..." maxlength="245">
                     <button class="search-button inline-block search-button bg-ma-magenta absolute" type="submit">
                         <img class="search-button-inner"
                              src="https://i.ibb.co/cKWmvxf/Magnifying-glass-icon-svg-copy.png">
@@ -206,17 +208,25 @@
 
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
-                    <form action="{{ route('search') }}" method="GET">
+                    <x-jet-responsive-nav-link>
+                    <form class="mr-9" action="{{ route('search') }}" method="GET">
                         @csrf
-                        <input class="mr-3" type="text" name="search"
-                               class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-[calc(100%+1rem)] bg-ma-light-gray sm:text-sm"
-                               placeholder="Zoeken..." maxlength="245">
+                        <input
+                            class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                            type="text" name="search"
+                            placeholder="Zoeken..." maxlength="245">
                     </form>
+                    </x-jet-responsive-nav-link>
 
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                                                :active="request()->routeIs('profile.show')">
                         {{ __('Profiel') }}
                     </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link  href="{{ route('upload') }}">
+                        {{ __('Uploaden') }}
+                    </x-jet-responsive-nav-link>
+
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
@@ -232,7 +242,7 @@
                         <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                                    onclick="event.preventDefault();
                                     this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Uitloggen') }}
                         </x-jet-responsive-nav-link>
                     </form>
 
