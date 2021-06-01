@@ -134,10 +134,10 @@ class VideoController extends Controller
         $search = $request->input('search');
         $search = htmlspecialchars($search);
 
-        $tag_title = strtolower($search);
+        $searchKey = strtolower($search);
 
         $tag_result = DB::table('tags')
-        ->where('tag_title', 'LIKE', "%{$tag_title}%" )
+        ->where('tag_title', 'LIKE', "%{$searchKey}%" )
         ->get('tag_title');
 
         if (!empty($tag_result[0])) {
@@ -157,21 +157,25 @@ class VideoController extends Controller
             ->get();
         }
 
+        $searchCount = $results->count();
+
         // Return the search view with the results compacted
-        return view('search', compact('results'));
+        return view('search', compact('results', 'searchKey', 'searchCount'));
     }
 
     public function tagSearch(Request $request)
     {
         // Get the search value from the request
-        $search = $request->input('search');
+        $searchKey = $request->input('search');
 
         $results = videos::query()
-        ->where('tags', 'LIKE', "%{$search}%")
+        ->where('tags', 'LIKE', "%{$searchKey}%")
         ->orderByDesc('updated_at')
         ->get();
 
+        $searchCount = $results->count();
+
         // Return the search view with the results compacted
-        return view('search', compact('results'));
+        return view('search', compact('results', 'searchKey', 'searchCount'));
     }
 }

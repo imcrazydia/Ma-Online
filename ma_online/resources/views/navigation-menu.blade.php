@@ -27,7 +27,7 @@
                 <form class="mr-9" action="{{ route('search') }}" method="GET">
                     @csrf
                     <input
-                        class="relative inline-block focus:ring-lightgreen-100 focus:ring-lightgreen-100 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                        class="relative inline-block focus:ring-lightgreen-100 flex-1 w-full bg-ma-light-gray sm:text-sm"
                         type="text" name="search"
                         placeholder="Zoeken..." maxlength="245">
                     <button
@@ -221,12 +221,11 @@
 
 
                 <div class="mt-3 space-y-1">
-                    <!-- Account Management -->
                     <x-jet-responsive-nav-link>
                         <form class="mr-9" action="{{ route('search') }}" method="GET">
                             @csrf
                             <input
-                                class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full bg-ma-light-gray sm:text-sm"
+                                class="relative inline-block focus:ring-indigo-500 focus:border-indigo-500 flex-1 w-full bg-ma-light-gray sm:text-sm"
                                 type="text" name="search"
                                 placeholder="Zoeken..." maxlength="245">
                         </form>
