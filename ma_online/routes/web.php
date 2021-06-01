@@ -24,13 +24,16 @@ Route::get('/tagSearch/', [VideoController::class, 'tagSearch'])->name('tagSearc
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/profiel/{user}', [ProfileController::class, 'index'])->name('profiel');
 
+    Route::get('/video/{id}', [VideoController::class, 'index'])->name('video');
+});
+
+Route::middleware(['auth:sanctum', 'verified', 'student'])->group(function () {
     Route::get('/upload', function () {
         return view('upload');
     })->name('upload');
     Route::post('/upload/create', [UploadVideoController::class, 'youtubeCreate'])->name('create');
     Route::post('/store', [UploadVideoController::class, 'store'])->name('store');
 
-    Route::get('/video/{id}', [VideoController::class, 'index'])->name('video');
     Route::get('/video/{id}/edit/{user}', [VideoController::class, 'edit'])->name('edit');
     Route::post('/update', [VideoController::class, 'update'])->name('update');
 
