@@ -17,7 +17,9 @@ class UploadVideoController extends Controller
 
     public function index()
     {
-        return view('welcome');
+        $videos = videos::all()->sortDesc();
+
+        return view('welcome',compact('videos'));
     }
 
     public function youtubeCreate(Request $request)

@@ -394,12 +394,39 @@
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased bg-ma-gray">
     @auth
     <x-app-layout>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
+                @foreach ($videos as $video)
+                <div class="single-video">
+                    <div class="single-video-inner p-4">
+                        <a href="{{ route('video', ['id'=>$video->id]) }}">
+                            <div class="thumbnail-controller">
+                                <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                            </div>
+                            <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                            <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">
+                                {{ __(App\Models\User::where(['id' => $video->user_id])->pluck('name')->first()) }}
+                            </p>
+                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                <button
+                                    class="text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">
+                                    <img class="h-8 w-8 rounded-full object-cover inline-block"
+                                    src="{{ App\Models\User::where(['id' => $video->user_id])->pluck('profile_photo_path')->first() }}"
+                                    alt="{{ App\Models\User::where(['id' => $video->user_id])->pluck('name')->first() }}"/>
+                                </button>
+                            @endif
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
     </x-app-layout>
     @endauth
-    <div class="@auth @else welcome-background @endauth relative items-top justify-center min-h-screen bg-ma-gray sm:items-center py-4 sm:pt-0">
+    <div class="@auth @else welcome-background @endauth flex justify-center min-h-screen sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
             <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
@@ -415,13 +442,38 @@
 
         @auth
         @else
-            <table id="wrapper">
-                <tr>
-                    <td><img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"
-                            alt="Ma online logo"/></td>
-                </tr>
-            </table>
+            <img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"
+            alt="Ma online logo"/>
         @endauth
     </div>
+    <x-guest-layout>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
+                @foreach ($videos as $video)
+                <div class="single-video">
+                    <div class="single-video-inner p-4">
+                        <a href="{{ route('video', ['id'=>$video->id]) }}">
+                            <div class="thumbnail-controller">
+                                <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                            </div>
+                            <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                            <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">
+                                {{ __(App\Models\User::where(['id' => $video->user_id])->pluck('name')->first()) }}
+                            </p>
+                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                <button
+                                    class="text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">
+                                    <img class="h-8 w-8 rounded-full object-cover inline-block"
+                                    src="{{ App\Models\User::where(['id' => $video->user_id])->pluck('profile_photo_path')->first() }}"
+                                    alt="{{ App\Models\User::where(['id' => $video->user_id])->pluck('name')->first() }}"/>
+                                </button>
+                            @endif
+                        </a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </x-guest-layout>
 </body>
 </html>
