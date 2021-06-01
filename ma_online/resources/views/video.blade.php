@@ -30,7 +30,7 @@
                                 </button>
                             @endif
                         </h2>
-                        <p class="text-white text-sm">
+                        <p class="text-white text-sm hover:text-magenta-100 transition-all inline">
                             <a href="{{ route('profiel', ['user'=>$uploader]) }}">
                                 {{ __($uploader) }}
                             </a>
@@ -51,7 +51,7 @@
                             <form action="{{ route('tagSearch') }}" method="GET">
                                 @csrf
                                 <button type="submit"
-                                        class="px-2 m-1 text-white bg-magenta-100 py-1 rounded-md">{{ $tag->tag_title }}</button>
+                                        class="px-2 m-1 text-white bg-magenta-100 py-1 rounded-md hover:bg-gray-500 transition-all">{{ $tag->tag_title }}</button>
                                 <input type="hidden" name="search" value="{{ $tag->tag_title }}">
                             </form>
                         @endforeach
