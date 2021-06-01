@@ -3,6 +3,11 @@
         <h2 class="font-semibold text-xl text-white leading-tightt">
             <span>
                 {{ __($user) }}
+                @if (App\Models\User::where(['name' => $user])->pluck('role')->first() == 1)
+                    <i class="fas fa-star text-magenta-100"></i>
+                @elseif (App\Models\User::where(['name' => $user])->pluck('role')->first() == 2)
+                    <i class="fas fa-check text-lightgreen-100"></i>
+                @endif
             </span>
         </h2>
     </x-slot>
@@ -28,7 +33,14 @@
                                         <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
                                 </div>
                                 <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
-                                <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">{{ __($user) }} </p>
+                                <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">
+                                    {{ __($user) }}
+                                    @if (App\Models\User::where(['name' => $user])->pluck('role')->first() == 1)
+                                        <i class="fas fa-star text-magenta-100"></i>
+                                    @elseif (App\Models\User::where(['name' => $user])->pluck('role')->first() == 2)
+                                        <i class="fas fa-check text-lightgreen-100"></i>
+                                    @endif
+                                </p>
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                     <button
                                         class="text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">

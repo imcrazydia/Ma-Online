@@ -28,6 +28,11 @@
                             <a class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2"
                                 href="{{ route('profiel', ['user'=>App\Models\User::where(['id' => $result->user_id])->pluck('name')->first()]) }}">
                                 {{ App\Models\User::where(['id' => $result->user_id])->pluck('name')->first() }}
+                                @if (App\Models\User::where(['id' => $result->user_id])->pluck('role')->first() == 1)
+                                    <i class="fas fa-star text-magenta-100"></i>
+                                @elseif (App\Models\User::where(['id' => $result->user_id])->pluck('role')->first() == 2)
+                                    <i class="fas fa-check text-lightgreen-100"></i>
+                                @endif
                             </a>
                         </p>
                     </div>

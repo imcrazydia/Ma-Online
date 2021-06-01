@@ -33,6 +33,11 @@
                         <p class="text-white text-sm hover:text-magenta-100 transition-all inline">
                             <a href="{{ route('profiel', ['user'=>$uploader]) }}">
                                 {{ __($uploader) }}
+                                @if (App\Models\User::where(['name' => $uploader])->pluck('role')->first() == 1)
+                                    <i class="fas fa-star text-magenta-100"></i>
+                                @elseif (App\Models\User::where(['name' => $uploader])->pluck('role')->first() == 2)
+                                    <i class="fas fa-check text-lightgreen-100"></i>
+                                @endif
                             </a>
                         </p>
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
