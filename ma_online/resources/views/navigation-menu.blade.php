@@ -152,7 +152,7 @@
                             {{--                            </x-jet-dropdown-link>--}}
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                                {{ __('Settings') }}
+                                {{ __('Instellingen') }}
                             </x-jet-dropdown-link>
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -234,7 +234,7 @@
 
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                                                :active="request()->routeIs('profile.show')">
-                        {{ __('Profiel') }}
+                        {{ __('Instellingen') }}
                     </x-jet-responsive-nav-link>
 
                     <x-jet-responsive-nav-link href="{{ route('upload') }}">

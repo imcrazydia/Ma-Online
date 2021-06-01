@@ -8,7 +8,12 @@
                         <div class="single-video">
                             <div class="single-video-inner p-4">
                                 <a href="{{ route('video', ['id'=>$result->id]) }}">
+                                    <div class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-80">
+                                    <div class="thumbnail-inner absolute">
+                                        <i class="fas fa-play"></i>
+                                    </div>
                                     <img src="https://img.youtube.com/vi/{{ $result->video_id }}/0.jpg" alt="">
+                                    </div>
                                     <h2 class="video-title text-white font-bold pt-4">{{ __($result->title) }}</h2>
                                 </a>
                                 <p class="text-white text-sm text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">
