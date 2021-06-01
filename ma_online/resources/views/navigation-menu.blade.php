@@ -149,9 +149,11 @@
                                 {{ __('Profiel') }}
                             </x-jet-dropdown-link>
 
-                            <x-jet-dropdown-link href="{{ route('showVideos') }}">
-                                {{ __('Videos') }}
-                            </x-jet-dropdown-link>
+                            @if (Auth::user()->role == 1)
+                                <x-jet-dropdown-link href="{{ route('showVideos') }}">
+                                    {{ __('Videos') }}
+                                </x-jet-dropdown-link>
+                            @endif
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Instellingen') }}
