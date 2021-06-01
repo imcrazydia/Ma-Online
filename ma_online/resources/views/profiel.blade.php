@@ -21,7 +21,7 @@
                     <div class="single-video">
                         <div class="single-video-inner p-4">
                             <a href="{{ route('video', ['id'=>$video->id]) }}">
-                                <div class="thumbnail-controller relative">
+                                <div class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-80">
                                     <div class="thumbnail-inner absolute">
                                         <i class="fas fa-play"></i>
                                     </div>

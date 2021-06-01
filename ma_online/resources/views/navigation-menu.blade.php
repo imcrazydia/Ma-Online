@@ -111,7 +111,7 @@
                                     class="flex text-sm border-2 border-transparent rounded-full focus:outline-none transition relative">
                                     <img class="profile-picture object-cover"
                                          src="{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}"/>
-                                    <div class="fold-out absolute text-white bg-magenta-100">
+                                    <div class="fold-out absolute text-white bg-magenta-100 hover:bg-lightgreen-100 transition-all">
                                         <div class="fold-out-inner relative">
                                             <i class="fas fa-sort-down sort-down-inner absolute"></i>
                                         </div>
