@@ -146,12 +146,14 @@ class VideoController extends Controller
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
             ->orWhere('tags', 'LIKE', "%{$search}%")
+            ->orderByDesc('updated_at')
             ->get();
         } else {
             // Search in the title and body columns from the videos table
             $results = videos::query()
             ->where('title', 'LIKE', "%{$search}%")
             ->orWhere('description', 'LIKE', "%{$search}%")
+            ->orderByDesc('updated_at')
             ->get();
         }
 
@@ -166,6 +168,7 @@ class VideoController extends Controller
 
         $results = videos::query()
         ->where('tags', 'LIKE', "%{$search}%")
+        ->orderByDesc('updated_at')
         ->get();
 
         // Return the search view with the results compacted

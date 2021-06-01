@@ -12,6 +12,9 @@
                                     <h2 class="video-title text-white font-bold pt-4">{{ __($result->title) }}</h2>
                                 </a>
                                 <p class="text-white text-sm">
+                                    <img class="h-8 w-8 rounded-full object-cover"
+                                    src="{{ App\Models\User::where(['id' => $result->user_id])->pluck('profile_photo_path')->first() }}"
+                                    alt="{{ App\Models\User::where(['id' => $result->user_id])->pluck('name')->first() }}"/>
                                     <a href="{{ route('profiel', ['user'=>App\Models\User::where(['id' => $result->user_id])->pluck('name')->first()]) }}">
                                         {{ App\Models\User::where(['id' => $result->user_id])->pluck('name')->first() }}
                                     </a>
