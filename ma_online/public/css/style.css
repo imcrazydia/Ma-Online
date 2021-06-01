@@ -261,13 +261,6 @@ input {
     }
 }
 
-/*Welcome image size controller*/
-@media only screen and (max-width: 411px) {
-    .welcome-image-width {
-        width: 60%;
-    }
-}
-
 @media only screen and (max-width: 750px) {
     .breakpoint-phone {
         grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -294,7 +287,6 @@ input {
     height: 100%;
 }
 
-/*Video verwijderen breakpoint phone*/
 @media only screen and (max-width: 500px) {
     .delete-modal {
         width: 90%;
@@ -303,5 +295,19 @@ input {
 
     .modal-footer {
         margin-top: 0px;
+    }
+
+    .mobile-nav {
+        display: none;
+    }
+
+    .cols-phone-welcome {
+        grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+    }
+}
+
+@media only screen and (max-width: 411px) {
+    .welcome-image-width {
+        width: 60%;
     }
 }
