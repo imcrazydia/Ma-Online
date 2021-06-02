@@ -20,9 +20,8 @@ class AdminController extends Controller
 
     public function deleteVideo($id)
     {
-        // Get video from id parameter
         $videos = DB::table('videos')
-        ->where('id', $id ) // Get video id from video parameter
+        ->where('id', $id )
         ->get();
 
         foreach ($videos as $video) {
@@ -58,36 +57,39 @@ class AdminController extends Controller
 
     public function deleteUser($id)
     {
-        // Get video from id parameter
         $videos = DB::table('videos')
-        ->where('user_id', $id ) // Get video id from video parameter
+        ->where('user_id', $id )
         ->get();
 
-        //TODO
-        // - Maak een button die alle lege tags verwijderd (Deze button moet laten zien hoeveel lege tags er zijn)
-
-        foreach ($videos as $video) {
-            $tags = explode(",", $video->tags);
-
-            foreach ($tags as $tag) {
-                $items = DB::table('tags')
-                ->where('tag_title', $tag)
-                ->get('tag_title');
-
-                foreach ($items as $item) {
-                    $tag = DB::table('tags')->where("tag_title", $item->tag_title)->get();
-
-                    foreach ($tag as $currentTag) {
-                        DB::table('tags')->where("tag_title", $currentTag->tag_title)->decrement('amount_used');
-                    }
-                }
-            }
-
-            DB::table('videos')->where('user_id', $id )->delete();
+        if ($videos->isEmpty()) {
             DB::table('users')->where('id', $id )->delete();
 
             return redirect()->route('showUsers')
             ->with('success','De gebruiker is zonder problemen verwijderd.');
+        } else {
+            foreach ($videos as $video) {
+                $tags = explode(",", $video->tags);
+
+                foreach ($tags as $tag) {
+                    $items = DB::table('tags')
+                    ->where('tag_title', $tag)
+                    ->get('tag_title');
+
+                    foreach ($items as $item) {
+                        $tag = DB::table('tags')->where("tag_title", $item->tag_title)->get();
+
+                        foreach ($tag as $currentTag) {
+                            DB::table('tags')->where("tag_title", $currentTag->tag_title)->decrement('amount_used');
+                        }
+                    }
+                }
+
+                DB::table('videos')->where('user_id', $id )->delete();
+                DB::table('users')->where('id', $id )->delete();
+
+                return redirect()->route('showUsers')
+                ->with('success','De gebruiker is zonder problemen verwijderd.');
+            }
         }
     }
 
