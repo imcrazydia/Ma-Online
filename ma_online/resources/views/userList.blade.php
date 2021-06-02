@@ -58,6 +58,9 @@
                             </td>
                             <td class="px-16 py-2">
                                 <span>{{ App\Models\Role::where(['id' => $user->role])->pluck('role_name')->first() }}</span>
+                                <a href="{{ route('editUser', ['id'=>$user->id]) }}">
+                                    <i class="fas fa-pen text-lightgreen-100"></i>
+                                </a>
                             </td>
                             <td class="px-16 py-2">
                                 <span>{{ $user->created_at === NULL ? "00-00-0000" : $user->created_at->format('d-m-Y') }}</span>

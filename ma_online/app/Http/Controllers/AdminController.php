@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\videos;
 use App\Models\User;
+use App\Models\Role;
 use App\Models\tags;
 
 class AdminController extends Controller
@@ -62,6 +63,12 @@ class AdminController extends Controller
         ->where('user_id', $id ) // Get video id from video parameter
         ->get();
 
+        //TODO
+        // - Zorg ervoor dat de admin ook accounts kan verwijderen die geen video's hebben
+        // - Laat zien hoeveel video's de gebruiker heeft geupload
+        // - Tag pagina maken
+        // - Maak een button die alle lege tags verwijderd (Deze button moet laten zien hoeveel lege tags er zijn)
+
         foreach ($videos as $video) {
             $tags = explode(",", $video->tags);
 
@@ -86,6 +93,27 @@ class AdminController extends Controller
             ->with('success','De gebruiker is zonder problemen verwijderd.');
         }
     }
+
+    public function editUser($id)
+    {
+        $userData = DB::table('users')
+        ->where('id', $id)
+        ->get();
+
+        $roles = Role::all();
+
+        return view('editUser',compact('userData', 'roles'));
+    }
+
+    public function updateUser(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->role = htmlspecialchars($request->role_id);
+        $user->save();
+        return redirect()->route('showUsers')
+        ->with('success','De gebruikers rol is aangepast.');
+    }
+
 
     // public function showTags()
     // {

@@ -48,5 +48,7 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function() {
 
     Route::get('/admin/gebruikers', [AdminController::class, 'showUsers'])->name('showUsers');
     Route::get('/admin/gebruiker/{id}/destroy', [AdminController::class, 'deleteUser'])->name('deleteUser');
+    Route::get('/admin/gebruiker/{id}/edit/role', [AdminController::class, 'editUser'])->name('editUser');
+    Route::post('/admin/gebruiker/{id}/update/role', [AdminController::class, 'updateUser'])->name('updateUser');
     // Route::get('/admin/tags', [AdminController::class, 'showTags'])->name('showTags');
 });
