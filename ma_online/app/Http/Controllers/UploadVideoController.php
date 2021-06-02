@@ -17,9 +17,21 @@ class UploadVideoController extends Controller
 
     public function index()
     {
-        $videos = videos::all()->sortDesc();
+        $videos = videos::where('user_id', '!=', 1)
+        ->orderBy('created_at', 'desc')
+        ->get();
 
-        return view('welcome',compact('videos'));
+        $sytemVideos = videos::where('user_id', '=', 1)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        if ($sytemVideos->isEmpty()) {
+            $noVids = true;
+            return view('welcome',compact('videos', 'noVids'));
+        } else {
+            $noVids = false;
+            return view('welcome',compact('videos', 'noVids', 'sytemVideos'));
+        }
     }
 
     public function youtubeCreate(Request $request)
