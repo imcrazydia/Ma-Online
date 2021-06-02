@@ -1,14 +1,14 @@
 <x-guest-layout>
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
-    <div class="@auth @else welcome-background min-h-screen @endauth flex justify-center sm:items-center py-4 sm:pt-0">
+    <div class="flex justify-center sm:items-center py-4 sm:pt-0">
         @if (Route::has('login'))
             <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
                 @else
-                    <a href="{{ route('login') }}" class="text-xl text-ma-white">Login</a>
+                    <a href="{{ route('login') }}" class="text-xl text-white">Login</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-xl text-ma-white">Register</a>
+                        <a href="{{ route('register') }}" class="ml-4 text-xl text-white">Register</a>
                     @endif
                 @endauth
             </div>
