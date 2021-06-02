@@ -29,12 +29,12 @@
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <input type="text" name="title" id="title"
-                                                class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray"
-                                                value="{{ $video->title }}" maxlength="245">
+                                                   class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray"
+                                                   value="{{ $video->title }}" maxlength="245">
                                         </div>
                                         <p class="mt-2 text-sm text-white">
                                             @if ($errors->has('title'))
-                                            <span class="text-danger">{{ $errors->first('title') }}</span>
+                                                <span class="text-danger">{{ $errors->first('title') }}</span>
                                             @endif
                                         </p>
                                     </div>
@@ -46,21 +46,23 @@
                                     </label>
                                     <div class="mt-1">
                                         <textarea id="description" name="description" rows="5" maxlength="245"
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm bg-ma-light-gray">
+                                                  class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm bg-ma-light-gray">
                                                 {{ $video->description }}
                                             </textarea>
                                     </div>
                                     <p class="mt-2 text-sm text-white">
                                         @if ($errors->has('description'))
-                                        <span class="text-danger">{{ $errors->first('description') }}</span>
+                                            <span class="text-danger">{{ $errors->first('description') }}</span>
                                         @endif
                                     </p>
                                 </div>
                             </div>
                             <div class="px-4 py-3 text-right sm:px-6">
-                                <a href="{{ route('delete', ['user'=>$video->user_id, 'id'=>$video->id]) }}" class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"></i>Verwijderen</a>
+                                <a href="{{ route('delete', ['user'=>$video->user_id, 'id'=>$video->id]) }}"
+                                   class="bg-red-500 hover:bg-red-400 inline-flex justify-center py-2 px-4 transition-all border border-transparent shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"></i>
+                                    Verwijderen</a>
                                 <button type="submit"
-                                    class="bg-ma-green inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        class="bg-lightgreen-100 inline-flex hover:bg-magenta-100 transition-all justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                     <span class="">Toepassen</span>
                                 </button>
                             </div>

@@ -135,6 +135,10 @@ html, body, #wrapper {
     width: 37px;
 }
 
+.border-radius-2px {
+    border-radius: 2px;
+}
+
 .flex-controller {
     flex-wrap: wrap;
 }

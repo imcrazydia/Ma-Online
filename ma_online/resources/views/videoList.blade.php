@@ -62,9 +62,9 @@
                             <td class="pl-16 py-2">
                                 <a href="{{ route('deleteVideo', ['id'=>$video->id]) }}"
                                    onclick="return confirm('Weet je zeker dat je de video {{$video->title}}, wilt verwijderen?')"
-                                   class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent
-                                    shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2
-                                     focus:ring-offset-2 focus:ring-red-500"><i class="far fa-trash-alt"></i>
+                                   class="bg-red-500 a inline-flex justify-center py-2 px-4 border border-transparent
+                                    shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2
+                                     focus:ring-offset-2 focus:ring-red-500 hover:bg-red-400 transition-all"><i class="far fa-trash-alt"></i>
 
                                 </a>
                             </td>
