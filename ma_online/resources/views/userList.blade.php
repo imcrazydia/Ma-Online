@@ -31,7 +31,7 @@
                         </th>
 
                         <th class="px-16 py-2">
-                            <span class="text-white">Datum geristreerd:</span>
+                            <span class="text-white">Datum geregistreerd:</span>
                         </th>
 
                         <th class="px-16 py-2">

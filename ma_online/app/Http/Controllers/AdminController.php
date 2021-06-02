@@ -116,7 +116,13 @@ class AdminController extends Controller
     {
         $tags = tags::orderBy('amount_used', 'desc')->get();
 
-        return view('tagList',compact('tags'));
+        $emptyTags = tags::query()
+        ->where('amount_used', '=', 0)
+        ->get();
+
+        $emptyTags = $emptyTags->count();
+
+        return view('tagList',compact('tags', 'emptyTags'));
     }
 
     public function deleteTag($id)
@@ -144,5 +150,19 @@ class AdminController extends Controller
 
         return redirect()->route('showTags')
         ->with('success','De tag is zonder problemen verwijderd.');
+    }
+
+    public function deleteEmptyTags()
+    {
+        $emptyTags = tags::query()
+        ->where('amount_used', '=', 0)
+        ->get();
+
+        foreach ($emptyTags as $emptyTag) {
+            DB::table('tags')->where('tag_title', $emptyTag->tag_title)->delete();
+        }
+
+        return redirect()->route('showTags')
+        ->with('success','De lege tags zijn zonder problemen verwijderd.');
     }
 }

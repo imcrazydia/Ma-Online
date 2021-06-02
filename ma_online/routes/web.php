@@ -53,4 +53,5 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function() {
 
     Route::get('/admin/tags', [AdminController::class, 'showTags'])->name('showTags');
     Route::get('/admin/tags/{id}/destroy', [AdminController::class, 'deleteTag'])->name('deleteTag');
+    Route::get('/admin/tags/empty', [AdminController::class, 'deleteEmptyTags'])->name('deleteEmptyTags');
 });
