@@ -41,13 +41,6 @@
                             </a>
                         </p>
                         <p class="text-ma-light-lighter-gray text-sm pt-2">{{ $video->description }}</p>
-
-{{--                        @if ($video->user_id == Auth::user()->id)--}}
-{{--                            <button class="float-right m-1 bg-ma-green mt-7 inline-flex justify-center py-1 px-4 border border-transparent--}}
-{{--                            shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">--}}
-{{--                                <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}"><i class="far fa-edit"></i><span class="ml-1">Bewerken</span></a>--}}
-{{--                            </button>--}}
-{{--                        @endif--}}
                     </div>
                     @endforeach
 
@@ -60,6 +53,61 @@
                                 <input type="hidden" name="search" value="{{ $tag->tag_title }}">
                             </form>
                         @endforeach
+                    </div>
+
+                    <div>
+                        <h2 class="video-title text-white font-bold pt-4">Comments - {{ $commentAmount }}</h2>
+                        @if ($errors->has('text'))
+                            <span class="text-red-600">{{ $errors->first('text') }}</span>
+                        @endif
+                        <form action="{{ route('storeComment', ['id'=>$id]) }}" method="post">
+                            @csrf
+                            <input type="hidden" name="author" id="author"
+                            value="{{ Auth::user()->name }}">
+                            <textarea name="text" class="text-magenta-100 comment-text" placeholder="typ hier..." maxlength="500" required>{{ old('text') }}</textarea>
+                            <button type="submit" class="px-4 py-2 text-white bg-magenta-100 rounded-md hover:bg-lightgreen-100 transition-all float-right">Comment</button>
+                        </form>
+
+                        <div class="mt-20">
+                            @foreach ($comments as $comment)
+                            <div class="mb-10">
+                                <div class="flex">
+                                    <img class="profile-picture object-cover @if ($uploader === $comment->author) border-solid border-2 border-magenta-100 @endif"
+                                    src="{{ App\Models\User::where(['name' => $comment->author])->pluck('profile_photo_path')->first() }}"
+                                    alt="{{ $comment->author }}" />
+                                    <h2 class="self-center ml-2 text-white">
+                                        {{ $comment->author }}
+                                        @if (App\Models\User::where(['name' => $comment->author])->pluck('role')->first() == 1)
+                                            <i class="fas fa-star text-magenta-100"></i>
+                                        @elseif (App\Models\User::where(['name' => $comment->author])->pluck('role')->first() == 2)
+                                            <i class="fas fa-check text-lightgreen-100"></i>
+                                        @endif
+
+                                        @if ($uploader === $comment->author)
+                                            <span class="text-magenta-100">(Uploader)</span>
+                                        @endif
+                                        <span class="mt-2 ml-2 text-ma-light-gray comment-time">{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}</span>
+                                    </h2>
+                                </div>
+                                <div class="flex justify-between">
+                                    <p class="mt-2 text-ma-light-gray">{{ $comment->text }}</p>
+
+                                    @if (Auth::user()->name === $comment->author || Auth::user()->name === $uploader || Auth::user()->id === 1)
+                                        <form action="{{ route('destroyComment', ['comment'=>$comment->id]) }}" method="post">
+                                            @csrf
+                                            <button type="submit"
+                                                    onclick="return confirm('Weet je zeker dat je deze comment wilt verwijderen?')"
+                                                    class="bg-red-600  inline-flex justify-center py-2 px-4 border border-transparent
+                                                    shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2
+                                                    focus:ring-offset-2 focus:ring-red-600 hover:bg-red-500 transition-all">
+                                                <i class="far fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\videos;
+use App\Models\Comment;
 use Auth;
 
 class VideoController extends Controller
@@ -43,7 +44,14 @@ class VideoController extends Controller
             }
         }
 
-        return view('video',compact('videos', 'tagNameList', 'uploader'));
+        $comments = Comment::where('video_id', '=', $id)
+                            ->orderByDesc('updated_at')
+                            ->get();
+        $commentAmount = $comments->count();
+
+        return view('video',compact('videos', 'tagNameList', 'uploader', 'id', 'comments'), [
+            'commentAmount' => $comments->count()
+        ]);
     }
 
     public function edit($id, $user)
