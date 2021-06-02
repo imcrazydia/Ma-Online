@@ -72,14 +72,18 @@ class UploadVideoController extends Controller
                 'video_id' => 'required',
                 'duration' => 'required',
                 'title' => 'required|max:95',
-                'description' => 'max:3990',
-                'tags' => 'required|max:255',
+                'description' => 'max:3995',
             ],
             [
                 'title.required' => 'Titel is vereist',
                 'tags.required' => 'Tags zijn vereist',
             ]
         );
+
+        if (strlen(trim($request->tags)) <= 0) {
+            return redirect()->route('upload')
+            ->with('fail', 'Het tags veld mag niet leeg zijn.');
+        }
 
         $tags = htmlspecialchars($request->tags);
         $tags = strtolower($tags);

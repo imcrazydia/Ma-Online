@@ -1,6 +1,13 @@
 <x-app-layout>
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <div class="py-12">
+        @if ($message = Session::get('fail'))
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-red-600 overflow-hidden shadow-xl sm:rounded-lg mb-10">
+                <p class="text-white px-5 sm:py-3 py-5">{{ $message }}</p>
+            </div>
+        </div>
+    @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form action="{{ route('create') }}" method="POST">
