@@ -42,16 +42,18 @@
                     @foreach ($users as $user)
                         <tr class="table-background text-white">
                             <td class="py-2">
-                                <img class="h-8 w-8 rounded-full object-cover inline-block"
-                                     src="{{ $user->profile_photo_path }}"
-                                     alt="{{ $user->name }}"/>
+                                <a href="{{ route('profiel', ['user'=>$user->name]) }}" class="hover:text-lightgreen-100">
+                                    <img class="h-8 w-8 rounded-full object-cover inline-block"
+                                    src="{{ $user->profile_photo_path }}"
+                                    alt="{{ $user->name }}"/>
 
-                                {{ $user->name }}
-                                @if ($user->role == 1)
-                                    <i class="fas fa-star text-magenta-100"></i>
-                                @elseif ($user->role == 2)
-                                    <i class="fas fa-check text-lightgreen-100"></i>
-                                @endif
+                                    {{ $user->name }}
+                                    @if ($user->role == 1)
+                                        <i class="fas fa-star text-magenta-100"></i>
+                                    @elseif ($user->role == 2)
+                                        <i class="fas fa-check text-lightgreen-100"></i>
+                                    @endif
+                                </a>
                             </td>
                             <td class="px-16 py-2">
                                 <span>{{ $user->email }}</span>

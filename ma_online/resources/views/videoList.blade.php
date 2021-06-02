@@ -42,8 +42,11 @@
                     @foreach ($videos as $video)
                         <tr class="table-background text-white">
                             <td class="py-2">
-                                <span
-                                    class="text-center ml-2">{{\Illuminate\Support\Str::limit($video->title, $limit = 40, $end = '...')}}</span>
+                                <a href="{{ route('video', ['id'=>$video->id]) }}" class="hover:text-lightgreen-100">
+                                <span class="text-center ml-2">
+                                    {{\Illuminate\Support\Str::limit($video->title, $limit = 40, $end = '...')}}
+                                </span>
+                                </a>
                             </td>
                             <td class="px-16 py-2">
                                 <span>{{count(explode(',', $video->tags))}}</span>
