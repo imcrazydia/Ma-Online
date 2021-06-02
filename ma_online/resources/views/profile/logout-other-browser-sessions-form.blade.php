@@ -1,6 +1,6 @@
 <x-jet-action-section>
     <x-slot name="title">
-        <div class="text-ma-white">
+        <div class="text-white">
             {{ __('Browser Sessions') }}
         </div>
     </x-slot>
@@ -12,7 +12,7 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-600">
+        <div class="max-w-xl text-sm text-white">
             {{ __('
 Indien nodig kunt u zich afmelden bij al uw andere browsersessies op al uw apparaten. Enkele van uw recente sessies staan hieronder vermeld; deze lijst is echter mogelijk niet volledig. Als u denkt dat uw account is gehackt, moet u ook uw wachtwoord bijwerken.') }}
         </div>
@@ -32,7 +32,7 @@ Indien nodig kunt u zich afmelden bij al uw andere browsersessies op al uw appar
                             @else
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2"
                                      stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                     class="w-8 h-8 text-gray-500">
+                                     class="w-8 h-8 text-white">
                                     <path d="M0 0h24v24H0z" stroke="none"></path>
                                     <rect x="7" y="4" width="10" height="16" rx="1"></rect>
                                     <path d="M11 5h2M12 17v.01"></path>
@@ -41,16 +41,16 @@ Indien nodig kunt u zich afmelden bij al uw andere browsersessies op al uw appar
                         </div>
 
                         <div class="ml-3">
-                            <div class="text-sm text-gray-600">
+                            <div class="text-sm text-white">
                                 {{ $session->agent->platform() }} - {{ $session->agent->browser() }}
                             </div>
 
                             <div>
-                                <div class="text-xs text-gray-500">
+                                <div class="text-xs text-white">
                                     {{ $session->ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-green-500 font-semibold">{{ __('This device') }}</span>
+                                        <span class="text-green-500 font-semibold">{{ __('Dit apparaat') }}</span>
                                     @else
                                         {{ __('Last active') }} {{ $session->last_active }}
                                     @endif
@@ -95,13 +95,13 @@ Indien nodig kunt u zich afmelden bij al uw andere browsersessies op al uw appar
 
             <x-slot name="footer">
                 <x-jet-secondary-button wire:click="$toggle('confirmingLogout')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
+                    {{ __('Stoppen') }}
                 </x-jet-secondary-button>
 
                 <x-jet-button class="ml-2"
                               wire:click="logoutOtherBrowserSessions"
                               wire:loading.attr="disabled">
-                    {{ __('Log Out Other Browser Sessions') }}
+                    {{ __('Log andere browsersessions uit') }}
                 </x-jet-button>
             </x-slot>
         </x-jet-dialog-modal>

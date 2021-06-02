@@ -1,18 +1,18 @@
 <x-jet-action-section>
     <x-slot name="title">
         <div class="text-ma-white">
-        {{ __('Twee stappen verificatie ') }}
+            {{ __('Twee stappen verificatie ') }}
         </div>
     </x-slot>
 
     <x-slot name="description">
         <div class="text-ma-white update-description">
-        {{ __('Voeg extra beveiliging aan uw account toe door middel van twee stappen verificatie.') }}
+            {{ __('Voeg extra beveiliging aan uw account toe door middel van twee stappen verificatie.') }}
         </div>
     </x-slot>
 
     <x-slot name="content">
-        <h3 class="text-lg font-medium text-gray-900">
+        <h3 class="text-lg font-medium text-white">
             @if ($this->enabled)
                 {{ __('Je hebt twee stappen verificatie momenteel ingeschakeld.') }}
             @else
@@ -20,7 +20,7 @@
             @endif
         </h3>
 
-        <div class="mt-3 max-w-xl text-sm text-gray-600">
+        <div class="mt-3 max-w-xl text-sm text-white">
             <p>
                 {{ __('Als tweefactorauthenticatie is ingeschakeld, wordt u tijdens de authenticatie om een ​​veilig, willekeurig token gevraagd. U kunt dit token ophalen uit de Google Authenticator-applicatie van uw telefoon.') }}
             </p>
@@ -28,7 +28,7 @@
 
         @if ($this->enabled)
             @if ($showingQrCode)
-                <div class="mt-4 max-w-xl text-sm text-gray-600">
+                <div class="mt-4 max-w-xl text-sm text-white">
                     <p class="font-semibold">
                         {{ __('Twee-factor-authenticatie is nu ingeschakeld. Scan de volgende QR-code met de verificatietoepassing van uw telefoon.') }}
                     </p>
@@ -40,9 +40,9 @@
             @endif
 
             @if ($showingRecoveryCodes)
-                <div class="mt-4 max-w-xl text-sm text-gray-600">
+                <div class="mt-4 max-w-xl text-sm text-white">
                     <p class="font-semibold">
-                        {{ __('Store these recovery codes in a secure password manager. They can be used to recover access to your account if your two factor authentication device is lost.') }}
+                        {{ __('Bewaar deze herstelcodes in een veilige wachtwoordbeheerder. Ze kunnen worden gebruikt om de toegang tot uw account te herstellen als uw apparaat voor tweefactorauthenticatie verloren is gegaan.') }}
                     </p>
                 </div>
 

@@ -10,7 +10,7 @@
     <div class="py-12">
         @if ($message = Session::get('success'))
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-green-600 overflow-hidden shadow-xl sm:rounded-lg mb-10">
+                <div class=" overflow-hidden shadow-xl sm:rounded-lg mb-10">
                     <p class="text-white px-5 sm:py-3 py-5">{{ $message }}</p>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         </th>
 
                         <th class="py-2">
-                            <span class="text-white">Datum:</span>
+                            <span class="text-white">Datum gepost:</span>
                         </th>
 
                         <th class="py-2">
@@ -62,9 +62,9 @@
                             <td class="pl-16 py-2">
                                 <a href="{{ route('deleteVideo', ['id'=>$video->id]) }}"
                                    onclick="return confirm('Weet je zeker dat je de video {{$video->title}}, wilt verwijderen?')"
-                                   class="bg-red-500 a inline-flex justify-center py-2 px-4 border border-transparent
+                                   class="bg-red-600 inline-flex justify-center py-2 px-4 border border-transparent
                                     shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2
-                                     focus:ring-offset-2 focus:ring-red-500 hover:bg-red-400 transition-all"><i class="far fa-trash-alt"></i>
+                                     focus:ring-offset-2 focus:ring-red-500 hover:bg-red-500 transition-all"><i class="far fa-trash-alt"></i>
 
                                 </a>
                             </td>

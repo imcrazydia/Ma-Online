@@ -1,6 +1,6 @@
 <x-jet-action-section>
     <x-slot name="title">
-        <div class="text-ma-white">
+        <div class="text-white">
             {{ __('Verwijder account') }}
         </div>
     </x-slot>
@@ -12,7 +12,7 @@
     </x-slot>
 
     <x-slot name="content">
-        <div class="max-w-xl text-sm text-gray-600">
+        <div class="max-w-xl text-sm text-white">
             {{ __('Zodra uw account is verwijderd, worden al zijn bronnen en gegevens permanent verwijderd. Download alle gegevens of informatie die u wilt behouden voordat u uw account verwijdert.') }}
         </div>
 
