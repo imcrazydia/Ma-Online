@@ -19,30 +19,31 @@
             <div>
                 <table class="min-w-full table-auto">
                     <thead class="justify-between">
-                      <tr class="bg-gray-800">
-                        <th class="px-16 py-2">
-                          <span class="text-gray-300">Titel</span>
+                    <tr>
+                        <th class="py-2 text-left">
+                            <span class="text-white">Titel:</span>
                         </th>
-                        <th class="px-16 py-2">
-                          <span class="text-gray-300">Aantal tags</span>
+                        <th class="py-2">
+                            <span class="text-white">Tags:</span>
                         </th>
-                        <th class="px-16 py-2">
-                          <span class="text-gray-300">Uploader</span>
-                        </th>
-
-                        <th class="px-16 py-2">
-                          <span class="text-gray-300">Geupload op</span>
+                        <th class="py-2">
+                            <span class="text-white">Gebruiker:</span>
                         </th>
 
-                        <th class="px-16 py-2">
+                        <th class="py-2">
+                            <span class="text-white">Datum:</span>
                         </th>
-                      </tr>
+
+                        <th class="py-2">
+                        </th>
+                    </tr>
                     </thead>
-                    <tbody class="bg-gray-200">
-                        @foreach ($videos as $video)
-                        <tr class="bg-white border-4 border-gray-200">
+                    <tbody class="bg-gray-200 font-normal">
+                    @foreach ($videos as $video)
+                        <tr class="table-background text-white">
                             <td class="py-2">
-                                <span class="text-center ml-2 font-semibold">{{\Illuminate\Support\Str::limit($video->title, $limit = 40, $end = '...')}}</span>
+                                <span
+                                    class="text-center ml-2">{{\Illuminate\Support\Str::limit($video->title, $limit = 40, $end = '...')}}</span>
                             </td>
                             <td class="px-16 py-2">
                                 <span>{{count(explode(',', $video->tags))}}</span>
@@ -55,18 +56,22 @@
                                     <i class="fas fa-check text-lightgreen-100"></i>
                                 @endif
                             </td>
-                            <td class="px-16 py-2">
+                            <td class="px-14 py-2">
                                 <span>{{ $video->created_at->format('d-m-Y') }}</span>
                             </td>
-                            <td class="px-16 py-2">
+                            <td class="pl-16 py-2">
                                 <a href="{{ route('deleteVideo', ['id'=>$video->id]) }}"
                                    onclick="return confirm('Weet je zeker dat je de video {{$video->title}}, wilt verwijderen?')"
-                                   class="bg-red-600 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Verwijderen</a>
+                                   class="bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent
+                                    shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2
+                                     focus:ring-offset-2 focus:ring-red-500"><i class="far fa-trash-alt"></i>
+
+                                </a>
                             </td>
-                          </tr>
-                        @endforeach
+                        </tr>
+                    @endforeach
                     </tbody>
-                  </table>
+                </table>
             </div>
         </div>
     </div>

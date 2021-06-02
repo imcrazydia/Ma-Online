@@ -151,11 +151,11 @@
 
                             @if (Auth::user()->role == 1)
                                 <x-jet-dropdown-link href="{{ route('showUsers') }}">
-                                    {{ __('Gebruikers') }}
+                                    {{ __('Gebruiker beheer') }}
                                 </x-jet-dropdown-link>
 
                                 <x-jet-dropdown-link href="{{ route('showVideos') }}">
-                                    {{ __('Videos') }}
+                                    {{ __('Video beheer') }}
                                 </x-jet-dropdown-link>
                             @endif
 

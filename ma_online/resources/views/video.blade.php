@@ -51,9 +51,9 @@
                     </div>
                     @endforeach
 
-                    <div class="mt-4 flex">
+                    <div class="mt-4 flex flex-controller">
                         @foreach ($tagNameList as $tag)
-                            <form action="{{ route('tagSearch') }}" method="GET">
+                            <form class="" action="{{ route('tagSearch') }}" method="GET">
                                 @csrf
                                 <button type="submit"
                                         class="px-2 m-1 text-white bg-magenta-100 py-1 rounded-md hover:bg-lightgreen-100 transition-all">{{ $tag->tag_title }}</button>

@@ -29,6 +29,15 @@ h1 {
     position: relative;
 }
 
+.table-background {
+    background-color: #272727;
+}
+
+
+.table-background:nth-child(2n) {
+    background-color: #535353;
+}
+
 .grid-placement {
     position: absolute;
     top: 50%;
@@ -124,6 +133,10 @@ html, body, #wrapper {
     border-radius: 2px;
     height: 37px;
     width: 37px;
+}
+
+.flex-controller {
+    flex-wrap: wrap;
 }
 
 .thumbnail-controller img{
