@@ -160,7 +160,11 @@ class VideoController extends Controller
         $searchCount = $results->count();
 
         // Return the search view with the results compacted
-        return view('search', compact('results', 'searchKey', 'searchCount'));
+        if ($request->unknown === 'guest') {
+            return view('guestSearch', compact('results', 'searchKey', 'searchCount'));
+        } else {
+            return view('search', compact('results', 'searchKey', 'searchCount'));
+        }
     }
 
     public function tagSearch(Request $request)

@@ -461,6 +461,22 @@
     @else
         <x-guest-layout>
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="p-4">
+                    <form class="mr-9" action="{{ route('search') }}" method="GET">
+                        @csrf
+                        <input type="hidden" name="unknown" id="unknown"
+                        value="guest">
+                        <input
+                            class="relative inline-block focus:ring-lightgreen-100 flex-1 w-full bg-ma-light-gray sm:text-sm text-magenta-100"
+                            type="text" name="search"
+                            placeholder="Zoeken..." maxlength="245">
+                        <button
+                            class="search-button inline-block search-button bg-ma-magenta hover:bg-lightgreen-100 absolute transition-all"
+                            type="submit">
+                            <img class="search-button-inner"><i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
                 <div class="breakpoint-phone overflow-hidden text-ma-white grid grid-cols-3 gap-6">
                     @foreach ($videos as $video)
                     <div class="single-video">
