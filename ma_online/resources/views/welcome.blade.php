@@ -400,6 +400,13 @@
 
     {{-- INGELOGD --}}
     <x-app-layout>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-white leading-tightt">
+            <span>
+                {{ __('Homepage') }}
+            </span>
+            </h2>
+        </x-slot>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
                 @foreach ($videos as $video)
