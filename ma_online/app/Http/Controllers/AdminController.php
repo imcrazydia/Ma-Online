@@ -64,9 +64,6 @@ class AdminController extends Controller
         ->get();
 
         //TODO
-        // - Zorg ervoor dat de admin ook accounts kan verwijderen die geen video's hebben
-        // - Laat zien hoeveel video's de gebruiker heeft geupload
-        // - Tag pagina maken
         // - Maak een button die alle lege tags verwijderd (Deze button moet laten zien hoeveel lege tags er zijn)
 
         foreach ($videos as $video) {
@@ -115,10 +112,37 @@ class AdminController extends Controller
     }
 
 
-    // public function showTags()
-    // {
-    //     $tags = tags::all()->sortDesc();
+    public function showTags()
+    {
+        $tags = tags::orderBy('amount_used', 'desc')->get();
 
-    //     return view('tagList',compact('tags'));
-    // }
+        return view('tagList',compact('tags'));
+    }
+
+    public function deleteTag($id)
+    {
+        $tags = DB::table('tags')
+        ->where('id', $id )
+        ->get();
+
+        $videos = videos::all();
+
+        foreach ($videos as $video) {
+            $videoTags = explode(",", $video->tags);
+            $index = array_search($tags[0]->tag_title, $videoTags);
+
+            if ($index !== false) {
+                $new = array_diff($videoTags, array($tags[0]->tag_title));
+                $updatedTags = implode(",", $new);
+
+                videos::where('id', '=', $video->id)
+                ->update(['tags' => $updatedTags]);
+
+                DB::table('tags')->where('tag_title', $tags[0]->tag_title )->delete();
+            }
+        }
+
+        return redirect()->route('showTags')
+        ->with('success','De tag is zonder problemen verwijderd.');
+    }
 }

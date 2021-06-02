@@ -157,6 +157,10 @@
                                 <x-jet-dropdown-link href="{{ route('showVideos') }}">
                                     {{ __('Video beheer') }}
                                 </x-jet-dropdown-link>
+
+                                <x-jet-dropdown-link href="{{ route('showTags') }}">
+                                    {{ __('Tags beheer') }}
+                                </x-jet-dropdown-link>
                             @endif
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
