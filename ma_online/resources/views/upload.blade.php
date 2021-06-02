@@ -86,7 +86,7 @@
                                         Beschrijving
                                     </label>
                                     <div class="mt-1">
-                                        <textarea id="description" name="description" rows="5" maxlength="245"
+                                        <textarea id="description" name="description" rows="5" maxlength="3990"
                                                   class="focus:ring-lightgreen-100 focus:border-lightgreen-100 flex-1 block w-full text-ma-white sm:text-sm bg-ma-light-gray">
                                             {{ $video->items['0']->snippet->description }}
                                         </textarea>

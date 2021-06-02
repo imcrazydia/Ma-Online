@@ -30,7 +30,7 @@ class UploadVideoController extends Controller
                 'required',
                 'url',
                 'max:255',
-                'regex:/^\bhttps:\/\/www\.youtube\.com\/watch\?v=\b/'
+                'regex:/^\bhttps:\/\/www\.youtube\.com\/watch\b/'
             ],
         ],
         [
