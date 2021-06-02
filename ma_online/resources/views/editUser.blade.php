@@ -15,10 +15,9 @@
                     <h2 class="text-ma-light-gray">Huidige rol: <span class="text-magenta-100">{{ App\Models\Role::where(['id' => $user->role])->pluck('role_name')->first() }}</span></h2>
 
                     @foreach ($roles as $role)
-                        @if ($user->role == $role->id)
-                            <span class="hidden">{{ $role->role_name }}</span>
-                        @else
-                            <form action="{{ route('updateUser', ['id'=>$user->id]) }}" method="POST">
+                        @if ($user->role !== $role->id)
+                            <div class="py-3">
+                                <form action="{{ route('updateUser', ['id'=>$user->id]) }}" method="POST">
                                 @csrf
                                 <label for="role_name" class="block text-sm font-medium text-white">
                                     {{ $role->role_name }}
@@ -41,11 +40,12 @@
                                         <span class="">Toepassen</span>
                                     </button>
                                 @endif
+                            </form>
+                            </div>
                         @endif
                     @endforeach
 
                 @endforeach
-            </div>
             </div>
         </div>
     </div>
