@@ -62,7 +62,7 @@
                                 <span>{{ $tag->created_at->format('d-m-Y') }}</span>
                             </td>
                             <td class="pl-16 py-2 text-center">
-                                @if ($tag->amount_used !== 0)
+                                @if ($tag->amount_used > 0)
                                     <a href="{{ route('deleteTag', ['id'=>$tag->id]) }}"
                                         onclick="return confirm('Weet je zeker dat je de tag {{$tag->tag_title}}, wilt verwijderen?')"
                                         class="bg-red-600  inline-flex justify-center py-2 px-4 border border-transparent
