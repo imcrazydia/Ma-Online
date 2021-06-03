@@ -18,13 +18,14 @@
                         @if ($user->role == $role->id)
                             <span class="hidden">{{ $role->role_name }}</span>
                         @else
+                        <div class="py-3">
                             <form action="{{ route('updateUser', ['id'=>$user->id]) }}" method="POST">
                                 @csrf
                                 <label for="role_name" class="block text-sm font-medium text-white">
                                     {{ $role->role_name }}
                                 </label>
                                 <input type="hidden" name="role_id" id="role_id"
-                                       value="{{ $role->id }}">
+                                    value="{{ $role->id }}">
                                 @if ($role->id == 1)
                                     <button type="submit"
                                             onclick="return confirm('Weet je zeker dat je de gebruiker een {{$role->role_name}}, wilt maken?')"
@@ -41,11 +42,12 @@
                                         <span class="">Toepassen</span>
                                     </button>
                                 @endif
+                            </form>
+                        </div>
                         @endif
                     @endforeach
 
                 @endforeach
-            </div>
             </div>
         </div>
     </div>

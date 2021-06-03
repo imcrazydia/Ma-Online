@@ -28,10 +28,23 @@
                         </th>
 
                         <th class="py-2">
-                            <span class="text-white">Datum:</span>
+                            <span class="text-white">Datum geupload:</span>
                         </th>
 
                         <th class="py-2">
+                            @if ($emptyTags === 0)
+                                <span class="text-white">
+                                    {{ $emptyTags }} Lege tags
+                                </span>
+                            @else
+                                <a href="{{ route('deleteEmptyTags') }}"
+                                    class="bg-red-600  inline-block py-2 px-4 border border-transparent
+                                            shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2
+                                            focus:ring-offset-2 focus:ring-red-600 hover:bg-red-500 transition-all">
+                                    <span>{{ $emptyTags }} Lege tags</span>
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            @endif
                         </th>
                     </tr>
                     </thead>
@@ -42,21 +55,20 @@
                                 <span
                                     class="text-center ml-2">{{\Illuminate\Support\Str::limit($tag->tag_title, $limit = 40, $end = '...')}}</span>
                             </td>
-                            <td class="px-16 py-2">
+                            <td class="px-16 py-2 text-center">
                                 <span>{{ $tag->amount_used }}</span>
                             </td>
-                            <td class="px-14 py-2">
+                            <td class="px-14 py-2 text-center">
                                 <span>{{ $tag->created_at->format('d-m-Y') }}</span>
                             </td>
-                            <td class="pl-16 py-2">
-                                @if ($tag->amount_used !== 0)
+                            <td class="pl-16 py-2 text-center">
+                                @if ($tag->amount_used > 0)
                                     <a href="{{ route('deleteTag', ['id'=>$tag->id]) }}"
                                         onclick="return confirm('Weet je zeker dat je de tag {{$tag->tag_title}}, wilt verwijderen?')"
                                         class="bg-red-600  inline-flex justify-center py-2 px-4 border border-transparent
-                                    shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2
-                                     focus:ring-offset-2 focus:ring-red-600 hover:bg-red-500 transition-all"><i
-                                            class="far fa-trash-alt"></i>
-
+                                                shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2
+                                                focus:ring-offset-2 focus:ring-red-600 hover:bg-red-500 transition-all">
+                                        <i class="far fa-trash-alt"></i>
                                     </a>
                                 @endif
                             </td>

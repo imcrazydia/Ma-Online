@@ -10,7 +10,7 @@
     <div class="py-12">
         @if ($message = Session::get('success'))
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class=" overflow-hidden shadow-xl sm:rounded-lg mb-10">
+                <div class="bg-green-600 overflow-hidden shadow-xl sm:rounded-lg mb-10">
                     <p class="text-white px-5 sm:py-3 py-5">{{ $message }}</p>
                 </div>
             </div>
@@ -42,8 +42,11 @@
                     @foreach ($videos as $video)
                         <tr class="table-background text-white">
                             <td class="py-2">
-                                <span
-                                    class="text-center ml-2">{{\Illuminate\Support\Str::limit($video->title, $limit = 40, $end = '...')}}</span>
+                                <a href="{{ route('video', ['id'=>$video->id]) }}" class="hover:text-lightgreen-100">
+                                <span class="text-center ml-2">
+                                    {{\Illuminate\Support\Str::limit($video->title, $limit = 40, $end = '...')}}
+                                </span>
+                                </a>
                             </td>
                             <td class="px-16 py-2">
                                 <span>{{count(explode(',', $video->tags))}}</span>

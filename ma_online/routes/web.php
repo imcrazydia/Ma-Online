@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UploadVideoController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/profiel/{user}', [ProfileController::class, 'index'])->name('profiel');
 
     Route::get('/video/{id}', [VideoController::class, 'index'])->name('video');
+    Route::post('/video/{id}/comments', [CommentsController::class, 'store'])->name('storeComment');
+
+    Route::post('/comments/{comment}/', [CommentsController::class, 'destroy'])->name('destroyComment');
 });
 
 Route::middleware(['auth:sanctum', 'verified', 'student'])->group(function () {
@@ -53,4 +57,5 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group(function() {
 
     Route::get('/admin/tags', [AdminController::class, 'showTags'])->name('showTags');
     Route::get('/admin/tags/{id}/destroy', [AdminController::class, 'deleteTag'])->name('deleteTag');
+    Route::get('/admin/tags/empty', [AdminController::class, 'deleteEmptyTags'])->name('deleteEmptyTags');
 });
