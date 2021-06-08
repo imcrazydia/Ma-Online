@@ -26,7 +26,7 @@
                             {{ __($video->title) }}
                             @if ($video->user_id == Auth::user()->id)
                                 <button class="relative float-right m-1 bg-ma-green inline-flex justify-center py-1 px-4 border border-transparent
-                            shadow-sm text-sm font-medium rounded-md font-semibold text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hover:bg-magenta-100 transition-all">
+                            shadow-sm text-sm font-medium border-radius-2px font-semibold text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 hover:bg-magenta-100 transition-all">
                                     <a href="{{ route('edit', ['user'=>$video->user_id, 'id'=>$video->id]) }}"><i
                                             class="far fa-edit mr-1"></i><span>Bewerken</span></a>
                                 </button>
@@ -58,7 +58,7 @@
                     </div>
 
                     <div>
-                        <h2 class="video-title text-white font-bold pt-4">Comments - {{ $commentAmount }}</h2>
+                        <h2 class="video-title text-white font-bold pt-4">Reacties - {{ $commentAmount }}</h2>
                         @if ($errors->has('text'))
                             <span class="text-red-600">{{ $errors->first('text') }}</span>
                         @endif
