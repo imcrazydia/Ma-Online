@@ -2,12 +2,12 @@
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <div class="py-12">
         @if ($message = Session::get('fail'))
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-red-600 overflow-hidden shadow-xl sm:rounded-lg mb-10">
-                <p class="text-white px-5 sm:py-3 py-5">{{ $message }}</p>
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                <div class="bg-red-600 overflow-hidden shadow-xl sm:rounded-lg mb-10">
+                    <p class="text-white px-5 sm:py-3 py-5">{{ $message }}</p>
+                </div>
             </div>
-        </div>
-    @endif
+        @endif
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form action="{{ route('create') }}" method="POST">
@@ -33,8 +33,11 @@
                             </div>
                             <div class="text-right">
                                 <button type="submit"
-                                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white transition-all hover:bg-lightgreen-100 bg-magenta-100">
-                                   Doorgaan
+                                        class="inline-flex items-center px-4 py-2 bg-magenta-100
+hover:bg-lightgreen-100 transition-all border border-transparent .border-radius-2px font-semibold text-xs text-white
+ tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
+ focus:ring-gray-300 disabled:opacity-25 transition">
+                                    Doorgaan
                                 </button>
                             </div>
                         </div>
@@ -109,7 +112,8 @@
                                     </div>
                                     <p class="mt-2 text-sm text-white">
                                         @if ($errors->has('tags'))
-                                            <span class="text-danger text-gray-500 font-light text-sm">{{ $errors->first('tags') }}</span>
+                                            <span
+                                                class="text-danger text-gray-500 font-light text-sm">{{ $errors->first('tags') }}</span>
                                         @endif
                                         Elke tag dient ingevoerd te worden met een , om de tag te onderscheiden.
                                     </p>
@@ -117,7 +121,10 @@
                             </div>
                             <div class="px-4 py-3 text-right sm:px-6">
                                 <button type="submit"
-                                        class="bg-ma-magenta hover:bg-lightgreen-100 transition-all inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        class="inline-flex items-center px-4 py-2 bg-magenta-100
+hover:bg-lightgreen-100 transition-all border border-transparent .border-radius-2px font-semibold text-xs text-white
+ tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
+ focus:ring-gray-300 disabled:opacity-25 transition">
                                     Upload
                                 </button>
                             </div>

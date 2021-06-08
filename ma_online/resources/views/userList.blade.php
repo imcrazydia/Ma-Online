@@ -7,7 +7,7 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12 overflow-x-auto overflow-y-auto">
         @if ($message = Session::get('success'))
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-green-600 overflow-hidden shadow-xl sm:rounded-lg mb-10">

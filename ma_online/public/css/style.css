@@ -17,7 +17,92 @@ h1 {
 
 .welcome-background {
     background-image: url("/img/student-schrijven.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
     background-size: cover;
+}
+
+.chevron {
+    position: absolute;
+    width: 28px;
+    height: 8px;
+    opacity: 0;
+    transform: scale3d(0.5, 0.5, 0.5);
+    animation: move 3s ease-out infinite;
+}
+
+.chevron-controller {
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.chevron:first-child {
+    animation: move 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+    animation: move 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 51%;
+    background: #fff;
+}
+
+.chevron:before {
+    left: 0;
+    transform: skew(0deg, 30deg);
+}
+
+.chevron:after {
+    right: 0;
+    width: 50%;
+    transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+    25% {
+        opacity: 1;
+
+    }
+    33% {
+        opacity: 1;
+        transform: translateY(30px);
+    }
+    67% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+    }
+}
+
+.text {
+    display: block;
+    margin-top: 75px;
+    margin-left: -30px;
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: .25;
+    animation: pulse 2s linear alternate infinite;
+}
+
+@keyframes pulse {
+    to {
+        opacity: 1;
+    }
 }
 
 .logo-size-welcome {
@@ -141,6 +226,15 @@ html, body, #wrapper {
 
 .flex-controller {
     flex-wrap: wrap;
+}
+
+.thumb {
+    overflow: hidden;
+}
+
+.thumb img {
+    margin: -10% 0;
+    width: 100%;
 }
 
 .thumbnail-controller img{
@@ -324,8 +418,16 @@ input {
 }
 
 @media only screen and (max-width: 411px) {
+    .welcome-all-vids {
+        padding-left: 14px;
+    }
+
     .welcome-image-width {
-        width: 60%;
+        width: 50%;
+        height: 20%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 

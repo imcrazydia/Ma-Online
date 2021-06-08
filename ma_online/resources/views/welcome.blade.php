@@ -395,7 +395,7 @@
     </style>
 </head>
 <body class="antialiased bg-ma-gray">
-    @auth
+@auth
 
 
     {{-- INGELOGD --}}
@@ -415,7 +415,8 @@
                         <div class="single-video">
                             <div class="single-video-inner p-4">
                                 <a href="{{ route('video', ['id'=>$video->id]) }}">
-                                    <div class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70">
+                                    <div
+                                        class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70 relative">
                                         <div class="thumbnail-inner absolute">
                                             <i class="fas fa-play"></i>
                                         </div>
@@ -428,117 +429,20 @@
                     @endforeach
                 </div>
             @endif
-            <h2 class="font-semibold text-xl text-white leading-tight pt-5">Alle videos</h2>
+            <h2 class="welcome-all-vids font-semibold text-xl text-white leading-tight pt-5">Alle videos</h2>
             <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
                 @foreach ($videos as $video)
-                <div class="single-video">
-                    <div class="single-video-inner p-4">
-                        <a href="{{ route('video', ['id'=>$video->id]) }}">
-                            <div class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70">
-                                <div class="thumbnail-inner absolute">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                                <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
-                            </div>
-                            <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
-                            <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">
-                                {{ __(App\Models\User::where(['id' => $video->user_id])->pluck('name')->first()) }}
-                                @if (App\Models\User::where(['id' => $video->user_id])->pluck('role')->first() == 1)
-                                    <i class="fas fa-star text-magenta-100"></i>
-                                @elseif (App\Models\User::where(['id' => $video->user_id])->pluck('role')->first() == 2)
-                                    <i class="fas fa-check text-lightgreen-100"></i>
-                                @endif
-                            </p>
-                            @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button
-                                    class="text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">
-                                    <img class="h-8 w-8 rounded-full object-cover inline-block"
-                                    src="{{ App\Models\User::where(['id' => $video->user_id])->pluck('profile_photo_path')->first() }}"
-                                    alt="{{ App\Models\User::where(['id' => $video->user_id])->pluck('name')->first() }}"/>
-                                </button>
-                            @endif
-                        </a>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </x-app-layout>
-    @endauth
-    <div class="@auth @else welcome-background min-h-screen @endauth flex justify-center sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                @else
-                    <a href="{{ route('login') }}" class="text-xl text-ma-white">Login</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="ml-4 text-xl text-ma-white">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-
-        @auth
-        @else
-            <img class="welcome-image-width" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"
-            alt="Ma online logo"/>
-        @endauth
-    </div>
-
-
-    {{-- NIET INGELOGD --}}
-    @auth
-    @else
-        <x-guest-layout>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                @if ($noVids == false)
-                    <h2 class="font-semibold text-xl text-white leading-tight pt-5">Ma Online</h2>
-                    <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
-                        @foreach ($sytemVideos as $video)
-                        <div class="single-video">
-                            <div class="single-video-inner p-4">
-                                <a href="{{ route('video', ['id'=>$video->id]) }}">
-                                    <div class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70">
-                                        <div class="thumbnail-inner absolute">
-                                            <i class="fas fa-play"></i>
-                                        </div>
-                                        <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
-                                    </div>
-                                    <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
-                                </a>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                @endif
-                <div class="p-4">
-                    <form class="mr-9" action="{{ route('search') }}" method="GET">
-                        @csrf
-                        <input type="hidden" name="unknown" id="unknown"
-                        value="guest">
-                        <input
-                            class="relative inline-block focus:ring-lightgreen-100 flex-1 w-full bg-ma-light-gray sm:text-sm text-magenta-100"
-                            type="text" name="search"
-                            placeholder="Zoeken..." maxlength="245">
-                        <button
-                            class="search-button inline-block search-button bg-ma-magenta hover:bg-lightgreen-100 absolute transition-all"
-                            type="submit">
-                            <img class="search-button-inner"><i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-                <h2 class="font-semibold text-xl text-white leading-tight pt-5">Alle videos</h2>
-                <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
-                    @foreach ($videos as $video)
                     <div class="single-video">
                         <div class="single-video-inner p-4">
                             <a href="{{ route('video', ['id'=>$video->id]) }}">
-                                <div class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70">
+                                <div
+                                    class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70">
                                     <div class="thumbnail-inner absolute">
                                         <i class="fas fa-play"></i>
                                     </div>
-                                    <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                    <div class="thumb">
+                                        <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                    </div>
                                 </div>
                                 <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
                                 <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">
@@ -553,17 +457,132 @@
                                     <button
                                         class="text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">
                                         <img class="h-8 w-8 rounded-full object-cover inline-block"
-                                        src="{{ App\Models\User::where(['id' => $video->user_id])->pluck('profile_photo_path')->first() }}"
-                                        alt="{{ App\Models\User::where(['id' => $video->user_id])->pluck('name')->first() }}"/>
+                                             src="{{ App\Models\User::where(['id' => $video->user_id])->pluck('profile_photo_path')->first() }}"
+                                             alt="{{ App\Models\User::where(['id' => $video->user_id])->pluck('name')->first() }}"/>
                                     </button>
                                 @endif
                             </a>
                         </div>
                     </div>
+                @endforeach
+            </div>
+        </div>
+    </x-app-layout>
+@endauth
+<div
+    class="@auth @else welcome-background relative min-h-screen @endauth flex justify-center sm:items-center py-4 sm:pt-0">
+    @if (Route::has('login'))
+        <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
+            @auth
+            @else
+                <a href="{{ route('login') }}" class="text-xl text-ma-white">Login</a>
+
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="ml-4 text-xl text-ma-white">Register</a>
+                @endif
+            @endauth
+        </div>
+    @endif
+
+    @auth
+    @else
+        <img class="welcome-image-width absolute" src="https://i.ibb.co/FHTDTKx/logo-ma-online.png"
+             alt="Ma online logo"/>
+
+        <div class="container">
+            <div class="chevron-controller absolute">
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+                <div class="chevron"></div>
+            </div>
+        </div>
+    @endauth
+</div>
+
+
+{{-- NIET INGELOGD --}}
+@auth
+@else
+    <x-guest-layout>
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            @if ($noVids == false)
+                <h2 class="font-semibold text-xl text-white leading-tight pt-5">Ma Online</h2>
+                <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
+                    @foreach ($sytemVideos as $video)
+                        <div class="single-video">
+                            <div class="single-video-inner p-4">
+                                <a href="{{ route('video', ['id'=>$video->id]) }}">
+                                    <div
+                                        class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70">
+                                        <div class="thumbnail-inner absolute">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                        <div class="thumb">
+                                            <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                        </div>
+                                    </div>
+                                    <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                                </a>
+                            </div>
+                        </div>
                     @endforeach
                 </div>
+            @endif
+            <div class="p-4">
+                <form class="mr-9" action="{{ route('search') }}" method="GET">
+                    @csrf
+                    <input type="hidden" name="unknown" id="unknown"
+                           value="guest">
+                    <input
+                        class="relative inline-block focus:ring-lightgreen-100 bg-lightgray-100 flex-1 w-full bg-ma-gray sm:text-sm"
+                        type="text" name="search"
+                        placeholder="Zoeken..." maxlength="245">
+                    <button
+                        class="search-button inline-block search-button bg-magenta-100 hover:bg-lightgreen-100 absolute transition-all"
+                        type="submit">
+                        <img class="search-button-inner"><i class="fas fa-search"></i>
+                    </button>
+                </form>
             </div>
-        </x-guest-layout>
-    @endauth
+            <h2 class="welcome-all-vids font-semibold text-xl text-white leading-tight pt-5">Alle videos</h2>
+            <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
+                @foreach ($videos as $video)
+                    <div class="single-video">
+                        <div class="single-video-inner p-4">
+                            <a href="{{ route('video', ['id'=>$video->id]) }}">
+                                <div
+                                    class="thumbnail-controller relative hover:text-magenta-100 transition-all hover:text-opacity-70">
+                                    <div class="thumbnail-inner absolute">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    <div class="thumb">
+                                        <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
+                                <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">
+                                    {{ __(App\Models\User::where(['id' => $video->user_id])->pluck('name')->first()) }}
+                                    @if (App\Models\User::where(['id' => $video->user_id])->pluck('role')->first() == 1)
+                                        <i class="fas fa-star text-magenta-100"></i>
+                                    @elseif (App\Models\User::where(['id' => $video->user_id])->pluck('role')->first() == 2)
+                                        <i class="fas fa-check text-lightgreen-100"></i>
+                                    @endif
+                                </p>
+                                @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                                    <button
+                                        class="text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition inline-block float-left">
+                                        <img class="h-8 w-8 rounded-full object-cover inline-block"
+                                             src="{{ App\Models\User::where(['id' => $video->user_id])->pluck('profile_photo_path')->first() }}"
+                                             alt="{{ App\Models\User::where(['id' => $video->user_id])->pluck('name')->first() }}"/>
+                                    </button>
+                                @endif
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </x-guest-layout>
+@endauth
 </body>
 </html>

@@ -30,7 +30,9 @@
                                     <div class="thumbnail-inner absolute">
                                         <i class="fas fa-play"></i>
                                     </div>
+                                    <div class="thumb">
                                         <img src="https://img.youtube.com/vi/{{ $video->video_id }}/0.jpg" alt="">
+                                    </div>
                                 </div>
                                 <h2 class="video-title text-white font-bold pt-4">{{ __($video->title) }}</h2>
                                 <p class="mb-3 text-ma-white text-xs inline-block ml-2 mt-2">

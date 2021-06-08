@@ -20,6 +20,9 @@ module.exports = {
                 lightgreen: {
                     '100': '#5ac8c6',
                 },
+                lightgray: {
+                    '100': '#535353',
+                },
             },
         },
     },

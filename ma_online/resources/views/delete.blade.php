@@ -18,12 +18,16 @@
                                     </div>
                                     <div class="modal-footer mt-5">
                                         <a href="{{ url()->previous() }}"
-                                           class="cancel-button bg-ma-magenta inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                           class="cancel-button inline-flex items-center px-4 py-2 bg-magenta-100
+hover:bg-lightgreen-100 transition-all border border-transparent border-radius-2px font-semibold text-xs text-white
+ tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
+ focus:ring-gray-300 disabled:opacity-25 transition"
                                            data-dismiss="modal">Annuleren</a>
                                         <a href="{{ route('destroy', ['user'=>$video->user_id, 'id'=>$video->id]) }}"
-                                           class="bg-red-600 mt-1 inline-flex justify-center py-2 px-4 border
-                                           border-transparent shadow-sm text-sm font-medium rounded-md text-white
-                                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                           class="inline-flex items-center px-4 py-2 bg-red-600
+hover:bg-red-500 transition-all border border-transparent border-radius-2px font-semibold text-xs text-white
+ tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
+ focus:ring-gray-300 disabled:opacity-25 transition">
                                             Verwijderen</a>
                                     </div>
                                 </div>

@@ -4,7 +4,7 @@
         <x-slot name="description">{{ $description }}</x-slot>
     </x-jet-section-title>
 
-    <div class="mt-5 md:mt-0 md:col-span-2">
+    <div class="p-5 mt-5 md:mt-0 md:col-span-2">
         <div class="">
             {{ $content }}
         </div>

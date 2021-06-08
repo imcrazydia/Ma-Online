@@ -163,7 +163,7 @@
                             </x-jet-dropdown-link>
 
                             <x-jet-dropdown-link href="{{ route('showTags') }}">
-                                {{ __('Tags beheer') }}
+                                {{ __('Tag beheer') }}
                             </x-jet-dropdown-link>
                         @endif
 
@@ -255,6 +255,23 @@
                     <x-jet-responsive-nav-link href="{{ route('upload') }}">
                         {{ __('Uploaden') }}
                     </x-jet-responsive-nav-link>
+
+                    @if (Auth::user()->role == 1)
+
+
+                        <x-jet-responsive-nav-link href="{{ route('showUsers') }}">
+                            {{ __('Gebruiker beheer') }}
+                        </x-jet-responsive-nav-link>
+
+                        <x-jet-responsive-nav-link href="{{ route('showVideos') }}">
+                            {{ __('Video beheer') }}
+                        </x-jet-responsive-nav-link>
+
+                        <x-jet-responsive-nav-link href="{{ route('showTags') }}">
+                            {{ __('Tag beheer') }}
+                        </x-jet-responsive-nav-link>
+
+                    @endif
 
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

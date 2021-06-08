@@ -59,11 +59,17 @@
                             </div>
                             <div class="px-4 py-3 text-right sm:px-6">
                                 <a href="{{ route('delete', ['user'=>$video->user_id, 'id'=>$video->id]) }}"
-                                   class="bg-red-500 hover:bg-red-400 inline-flex justify-center py-2 px-4 transition-all border border-transparent shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                   class="inline-flex items-center px-4 py-2 bg-red-600
+hover:bg-red-500 transition-all border border-transparent border-radius-2px font-semibold text-xs text-white
+ tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
+ focus:ring-gray-300 disabled:opacity-25 transition">
                                     Verwijderen
                                 </a>
                                 <button type="submit"
-                                        class="bg-lightgreen-100 inline-flex hover:bg-magenta-100 transition-all justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium border-radius-2px text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                        class="inline-flex items-center px-4 py-2 bg-lightgreen-100
+hover:bg-magenta-100 transition-all border border-transparent border-radius-2px font-semibold text-xs text-white
+ tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring
+ focus:ring-gray-300 disabled:opacity-25 transition">
                                     <span class="">Toepassen</span>
                                 </button>
                             </div>
