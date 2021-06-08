@@ -9,5 +9,5 @@ Door krachten (online) te bundelen gaat er geen expertise verloren en ontstaat e
 
 (Teksten aangeleverd door: Ruben Koops)
 
-## Website URL
+## Link naar de live versie van Ma-Online
 http://stepinin.pvb-prototype.nl/
