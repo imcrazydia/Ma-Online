@@ -1,4 +1,4 @@
-# Ma-Online
+# Ma Online
 Ma Online is dé online leeromgeving voor een leven lang ontwikkelen voor onze huidige en aspirant studenten, voor docenten en ondersteunende medewerkers, voor alumni en beroepsprofessionals.
 
 Het platform is de centrale leeromgeving waar kennis- en leermateriaal wordt aangeboden en uitgewisseld. Docenten kunnen het materiaal, ook van collega’s, inzetten in hun lespraktijk en studenten kunnen zelf op zoek naar materiaal dat aansluit bij hun leerbehoefte. Studenten krijgen op deze manier ruimte om hun eigen studieloopbaan uit te stippelen en interesses te voeden buiten de opleiding om. Het platform voorziet in deze behoefte door het open toegankelijk maken van al het leermateriaal dat wordt aangeboden.
@@ -9,5 +9,5 @@ Door krachten (online) te bundelen gaat er geen expertise verloren en ontstaat e
 
 (Teksten aangeleverd door: Ruben Koops)
 
-## Link naar de live versie van Ma-Online
+## Link naar de live versie van Ma Online
 http://stepinin.pvb-prototype.nl/
