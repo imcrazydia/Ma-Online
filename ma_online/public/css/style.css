@@ -336,10 +336,6 @@ select {
     color: #5ac8c6;
 }
 
-.welcome-login {
-    z-index: 99;
-}
-
 .border-bottom-white {
     border-bottom: 3px #fff solid;
 }

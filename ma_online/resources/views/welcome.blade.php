@@ -472,13 +472,15 @@
 <div
     class="@auth @else welcome-background relative min-h-screen @endauth flex justify-center sm:items-center py-4 sm:pt-0">
     @if (Route::has('login'))
-        <div class="welcome-login fixed top-0 right-0 px-6 py-4 sm:block">
+        <div class="fixed top-0 right-0 p-4 sm:block">
             @auth
             @else
-                <a href="{{ route('login') }}" class="text-xl text-ma-white">Login</a>
+                <a href="{{ route('login') }}"
+                   class="text-sm text-ma-white hover:text-magenta-100transition-all">Login</a>
 
                 @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-xl text-ma-white">Register</a>
+                    <a href="{{ route('register') }}"
+                       class="ml-4 text-sm text-ma-white hover:text-magenta-100 transition-all">Register</a>
                 @endif
             @endauth
         </div>
