@@ -40,7 +40,7 @@
                 @endforeach
             @else
                 <div>
-                    <h2>Geen resultaten gevonden met: "{{ $searchKey }}"</h2>
+                    <h2 class="text-white font-semibold">Geen resultaten gevonden met: "{{ $searchKey }}"</h2>
                 </div>
             @endif
             </div>
