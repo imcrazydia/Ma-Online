@@ -369,6 +369,9 @@ input {
 }
 
 @media only screen and (max-width: 750px) {
+    .authentication-position {
+        padding: 0px;
+    }
 
     .breakpoint-phone {
         grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -416,7 +419,11 @@ input {
 
 @media only screen and (max-width: 411px) {
     .authentication-position {
-        width: 300px;
+        padding: 20px;
+    }
+
+    .ma-text {
+        padding-left: 14px;
     }
 
     .welcome-all-vids {

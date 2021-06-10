@@ -508,7 +508,7 @@
     <x-guest-layout>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @if ($noVids == false)
-                <h2 class="font-semibold text-xl text-white leading-tight pt-5">Ma Online</h2>
+                <h2 class="ma-text font-semibold text-xl text-white leading-tight pt-5">Ma Online</h2>
                 <div class="cols-phone-welcome overflow-hidden text-ma-white grid grid-cols-3 gap-6">
                     @foreach ($sytemVideos as $video)
                         <div class="single-video">
