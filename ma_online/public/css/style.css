@@ -363,12 +363,16 @@ input {
 /* Voor ipad-pro blade view padding */
 
 @media only screen and (max-width: 1424px) {
-    .authentication-width {
+    .authentication-position {
         padding: 40px;
     }
 }
 
 @media only screen and (max-width: 750px) {
+    .authentication-position {
+        padding: 40px;
+    }
+
     .breakpoint-phone {
         grid-template-columns: repeat(1, minmax(0, 1fr));
     }
