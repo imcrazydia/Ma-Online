@@ -21,21 +21,23 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:255', 'unique:users', 'alpha_dash'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
+            'password' => [$this->passwordRules(), 'alpha_dash'],
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ],
         [
             'name.unique' => 'Deze naam is al in gebruik.',
+            'name.alpha_dash' => "De naam mag geen spaties bevatten,\n juist voorbeeld: " . str_replace(' ', '_', trim($input['name'])),
+            'password.alpha_dash' => "Het wachtwoord mag geen spaties bevatten.",
         ])->validate();
 
         return User::create([
-            'name'     => $input['name'],
-            'email'    => $input['email'],
-            'password' => Hash::make($input['password']),
+            'name'     => trim($input['name']),
+            'email'    => trim($input['email']),
+            'password' => trim(Hash::make($input['password'])),
             'role'     => 4,
-            'profile_photo_path' => 'https://ui-avatars.com/api/?name=' . $input['name'] . '&color=7F9CF5&background=EBF4FF'
+            'profile_photo_path' => 'https://ui-avatars.com/api/?name=' . trim($input['name']) . '&color=7F9CF5&background=EBF4FF'
         ]);
     }
 }
